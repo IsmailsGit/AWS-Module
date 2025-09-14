@@ -8,10 +8,10 @@ It's used by a diverse set of industries.
 AWS regions - A region is a cluster of data centres, AWS has regions all around the world.
 
 How to choose an AWS Region?
-Compliance with data governance and legal requirements 
-Availability for services, certain services aren't available in every region
-Proximity to customers faster response times and reduced latemcy
-Pricing, the pricing varies region to region
+<br> Compliance with data governance and legal requirements 
+<br> Availability for services, certain services aren't available in every region
+<br> Proximity to customers faster response times and reduced latency
+<br> Pricing, the pricing varies region to region
 
 AWS Availability Zones(AZs) 
 <br> Each region is made up of multiple az's (usually 3-6 zones) which are data centres. They're separated from each other so they're isolated from disasters and the others can keep running.
