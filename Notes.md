@@ -30,8 +30,14 @@ These are what allow you to control access in AWS
 
 To make managing users easier you can put them into a group and assign permissions to the whole group instead on manually assigning each user permissions.  
 Users don't have to be in a group and users can be in multiple groups.
+Users in multiple groups inherit all permissions, and inline policies can be given to a user only and not the group for specific permissions.
 
 ### Permissions
+Users or groups can be assigned JSON documents called policies
+<br> These policies define the permissions of the users.
+<br> In aws you apply the least privilege principle - don't give a user more permissions than necessary.
+
+### IAM Policies Structure
 
 
 
