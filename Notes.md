@@ -38,6 +38,7 @@ Users or groups can be assigned JSON documents called policies
 <br> In aws you apply the least privilege principle - don't give a user more permissions than necessary.
 
 ### IAM Policies Structure
+*To put a screenshot into an md file copy this ![Screenshot]() then copy the image and remove anything before the https including the "" and paste into the brackets*
 ![Screenshot](https://github.com/user-attachments/assets/622ea9c0-646a-4020-811b-94ee6383897c) 
 
 
