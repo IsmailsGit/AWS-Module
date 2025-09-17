@@ -50,6 +50,12 @@ Stronger password = higher security for your account.
 Hackers could get into your account and change configs, run a massive bill on your account or delete everything.
 MFA protects your root account and IAM user because even if anyone gets access to your account they need a security device like an app to verify that would produce a one time password(OTP).
 
+MFA device options in AWS:
+Virtual MFA device - Google authenticator, supports multiple tokens on a single device.
+Universal 2nd Factor(U2F) Security Key (Yubikey by Yubico 3rd party) - Just plug in, supports multiple root and iam users using a single security key.
+Hardware Key Fob MFA Device - Generates a new code every 30 seconds(Provided by Gemalto, 3rd Party)
+Hardware Key Fob MFA Device for AWS GovCloud(US) - This is specifically for AWS GovCloud in the US.
+
 
 
 
