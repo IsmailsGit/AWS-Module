@@ -65,6 +65,9 @@ Access keys are generated through the AWS Console, Users manage their own access
 Access keys are secret like a password, it shouldn't be shared.
 Access Key ID - Like a username 
 Secret Access Key - Like a password
+Never share your access keys and it's best practice to rotate your keys which means to generate new ones.
+
+
 
 
 
