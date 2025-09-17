@@ -56,6 +56,16 @@ Universal 2nd Factor(U2F) Security Key (Yubikey by Yubico 3rd party) - Just plug
 Hardware Key Fob MFA Device - Generates a new code every 30 seconds(Provided by Gemalto, 3rd Party)
 Hardware Key Fob MFA Device for AWS GovCloud(US) - This is specifically for AWS GovCloud in the US.
 
+#### 3 Main ways Users access AWS
+AWS Mangement Console - This is the web interface you're familiar with, great for spinning up instances, creating s3 buckets and confinguring resources manually on the console(also known as click ops). Its protected by a password and MFA
+AWS Command Line Interface(CLI) - You can automate tasks on the CLI, good for scripting and mangaging resources from your terminal, it's protected by access keys.
+AWS Software Developer Kit(SDK) - Good for writing code, if you're a software dev this is how you interact with aws. This is protected by access keys 
+
+Access keys are generated through the AWS Console, Users manage their own access keys.
+Access keys are secret like a password, it shouldn't be shared.
+Access Key ID - Like a username 
+Secret Access Key - Like a password
+
 
 
 
