@@ -60,12 +60,18 @@ Hardware Key Fob MFA Device for AWS GovCloud(US) - This is specifically for AWS 
 AWS Mangement Console - This is the web interface you're familiar with, great for spinning up instances, creating s3 buckets and confinguring resources manually on the console(also known as click ops). Its protected by a password and MFA
 AWS Command Line Interface(CLI) - You can automate tasks on the CLI, good for scripting and mangaging resources from your terminal, it's protected by access keys.
 AWS Software Developer Kit(SDK) - Good for writing code, if you're a software dev this is how you interact with aws. This is protected by access keys 
+Language-specific APIs(kind of like a prebuilt set of libraries that makes it easier to work with aws whether its python, javascript) 
+SDK enables you to access and manage aws services directly within your application
+
 
 Access keys are generated through the AWS Console, Users manage their own access keys.
 Access keys are secret like a password, it shouldn't be shared.
 Access Key ID - Like a username 
 Secret Access Key - Like a password
 Never share your access keys and it's best practice to rotate your keys which means to generate new ones.
+
+#### IAM Roles for Services
+
 
 
 
