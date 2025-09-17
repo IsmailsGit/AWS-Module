@@ -41,6 +41,16 @@ Users or groups can be assigned JSON documents called policies
 *To put a screenshot into an md file copy this ![Screenshot]() then copy the image and remove anything before the https including the "" and paste into the brackets*
 ![Screenshot](https://github.com/user-attachments/assets/622ea9c0-646a-4020-811b-94ee6383897c) 
 
+#### IAM Password Policy
+In AWS you can setup a password policy, it will include a minimum password length, includes upper and lowercase letters, numbers and non alphanumeric characters. You also require users to change their password after some time (password expiration) and allow users to change their own passwords.
+Aws also prevents password re-use, you can't reuse old passwords
+Stronger password = higher security for your account.
+
+#### MFA Multi Factor Authentication
+Hackers could get into your account and change configs, run a massive bill on your account or delete everything.
+MFA protects your root account and IAM user because even if anyone gets access to your account they need a security device like an app to verify that would produce a one time password(OTP).
+
+
 
 
 
