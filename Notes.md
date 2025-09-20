@@ -71,8 +71,13 @@ Secret Access Key - Like a password
 Never share your access keys and it's best practice to rotate your keys which means to generate new ones.
 
 #### IAM Roles for Services
+Some aws services will need to perform actions on your behalf e.g. an ec2 instance may need to read from an s3 bucket. 
 
+But you don't want to put hardcode credentials into those services thats where iam roles come in.
 
+IAM roles lets aws services get temporary access to other aws services without using long term credentials like access keys or passwords. It's basically giving your aws service permission to act on your behalf in a secure way .
+Common use cases: 
+EC2 Instance Roles 
 
 
 
