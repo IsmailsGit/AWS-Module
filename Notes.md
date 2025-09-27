@@ -80,6 +80,13 @@ Common use cases:
 EC2 Instance Roles 
 
 
+#### How to access the AWS CLI from the terminal
+Do "aws configure" in the terminal then it will ask you for your access keys
+
+Once you do all of that and your logged in do the command "aws sts get-caller-identity" to check if you are really logged in.
+
+You can do aws iam list-users to list iam users
+
 
 
 
