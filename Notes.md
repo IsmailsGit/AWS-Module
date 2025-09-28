@@ -123,10 +123,27 @@ Storing data on virtual drives(EBS Elastic Block Store), kind of like a hard dri
 Distributing load across machines(ELB Elastic Load Balances) - When you have multiple ec2 instances running at the same time, you want to make sure that the traffic is shared evenly. ELBs help distribute the incoming requests to your instances, so one machine isn't overloaded while others sit idle.
 Scaling the services using an auto-scaling group(ASG) - This allows ec2 to scale automatically, if your application gets more traffic, more instances are added. And if your traffic slows down, extra instances are removed. This is known as scaling in and scale out. You only pay for what you use.
 
-test
+#### EC2 Sizing and configuration options 
+Before you launch an ec2 instance aws lets you configure the instance:
 
-test2
+What operating system - Linux, Windows, even MacOS and more, the os you go for depends on what your application needs.
 
+How much compute power and cores(CPU), you can tailor this if you need more or less processing power.
+
+How much RAM,memory your instance will have, more memory helps with handling more data in real time.
+
+How much storage space - 
+Network attached EBS and EFS(Elastic File System) EBS is kind of like the hard drive attached to your virtual machine and think of EFS like shared storage accessible from multiple instances. 
+Hardware(EC2 Instance Store) is basically a hardware-level storage that's physically attached to the host machine. It's fast, but temporary. Means that if the instance is stopped, you lose the data on it.
+
+Network card - you can configure the speed of the network card depending on how much traffic you expect. 
+Public ip address - You can get a public ip address if you want your instance accessible from the internet.
+
+Firewall rules - Security groups(Known as SGs) act as firewalls for your instance, you can set up rules to control who can access your instance and which traffic can get through. Now this is super important for securing your EC2 instances.
+
+Bootstrap script or known as EC2 User Data, it's a script that runs automatically when the instance launches, it can be used to install software, run updates or set up tasks right when the instance starts.
+
+Wrong sizing/config settings can lead to underperformance or overpaying for resources you don't need.
 
 
 
