@@ -125,7 +125,7 @@ Scaling the services using an auto-scaling group(ASG) - This allows ec2 to scale
 
 test
 
-
+test2
 
 
 
