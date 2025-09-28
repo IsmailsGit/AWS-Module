@@ -119,8 +119,11 @@ EC2 is one of the most popular AWS services because of its flexibility.
 
 It mainly consists of:
 Renting virtual machines(EC2) = Infrastructure as a Service
+
 Storing data on virtual drives(EBS Elastic Block Store), kind of like a hard drive for ec2 instances.
+
 Distributing load across machines(ELB Elastic Load Balances) - When you have multiple ec2 instances running at the same time, you want to make sure that the traffic is shared evenly. ELBs help distribute the incoming requests to your instances, so one machine isn't overloaded while others sit idle.
+
 Scaling the services using an auto-scaling group(ASG) - This allows ec2 to scale automatically, if your application gets more traffic, more instances are added. And if your traffic slows down, extra instances are removed. This is known as scaling in and scale out. You only pay for what you use.
 
 #### EC2 Sizing and configuration options 
@@ -141,9 +144,16 @@ Public ip address - You can get a public ip address if you want your instance ac
 
 Firewall rules - Security groups(Known as SGs) act as firewalls for your instance, you can set up rules to control who can access your instance and which traffic can get through. Now this is super important for securing your EC2 instances.
 
-Bootstrap script or known as EC2 User Data, it's a script that runs automatically when the instance launches, it can be used to install software, run updates or set up tasks right when the instance starts.
+Bootstrap script or known as EC2 User Data - Details are in the next section
 
 Wrong sizing/config settings can lead to underperformance or overpaying for resources you don't need.
+
+#### User Data/Bootstrap Script
+Bootstrap script or known as EC2 User Data - it's a script that runs automatically only when the instance launches for the first time, it can be used to install software, run updates or downloading files from the internet like common packages, config files, any automation task you'd want to run when your machine first boots up, you do it here.
+EC2 user data script runs with root, meaning that it has full control of the system, that's powerful, but it means that you should be careful about what you include in this script.
+
+User data is perfect for automating deployments, why? because in larger production environments, manually logging into every instance to run setup commands would be a nightmare. With user data, you set it once, and AWS takes care of the rest.
+
 
 
 
