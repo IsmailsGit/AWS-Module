@@ -77,7 +77,31 @@ But you don't want to put hardcode credentials into those services thats where i
 
 IAM roles lets aws services get temporary access to other aws services without using long term credentials like access keys or passwords. It's basically giving your aws service permission to act on your behalf in a secure way .
 Common use cases: 
-EC2 Instance Roles 
+EC2 Instance Roles - When you launch an ec2 instance you can attach a role to it, this role gives the instance permission to access other aws services.
+
+Lambda Function Roles - If your lambda needs to interact with other aws services, you can attach a role to it which gives it the right permissions to do its job.
+
+Roles for CloudFormation - CloudFormation often needs to create and manage resources across multiple aws services, assigning a role allows it to handle those tasks securely without exposing credentials 
+
+#### IAM Security Tools
+These security tools help you manage your aws users and their permissions.
+
+IAM Credentials Report(account-level) -  A report that lists all your account’s users and the status of their various credentials e.g. lets you see which users have access keys, who’s using MFA.
+
+IAM Access Advisor(user-level) - Shows you the service permissions granted to a user and when those services were last accessed.
+
+You can use this to remove any old or unnecessary permissions.
+
+#### IAM Guidelines & Best Practices
+1. Don’t use the root account except for aws account setup, for security reasons as the root user has access to everything, use an IAM user that has appropriate permissions instead .
+2. One physical user per One aws user, no sharing logins, every person should have an account, this keeps things traceable and secure.
+3. Assign users to groups and assign permissions to groups, this makes managing permissions easier and more scalable as your team grows.
+4. Create a strong password policy e.g. minimum length and mixing it with characters.
+5. Use and enforce the use of MFA especially those that have access to important sensitive resources.
+6. Create and use roles for giving permissions to aws services instead of hard coding credentials, this is more secure and gives you better control of what services can access.
+7. Use access keys for programmatic access(CLI and SDK).
+8. Audit the permissions of your account using iam credentials report and iam access advisor to see what users and services are accessing and when they need these permissions.
+9. Never share IAM users and access keys.
 
 
 #### How to access the AWS CLI from the terminal
@@ -86,6 +110,21 @@ Do "aws configure" in the terminal then it will ask you for your access keys
 Once you do all of that and your logged in do the command "aws sts get-caller-identity" to check if you are really logged in.
 
 You can do aws iam list-users to list iam users
+
+### EC2 and Amazon Compute
+Amazon Compute provides the processing power to run applications in the cloud while AWS handles the physical servers, while you get to focus on what you want those servers to actually do.
+
+EC2(Elastic Compute Cloud)
+EC2 is one of the most popular AWS services because of its flexibility.
+
+It mainly consists of:
+Renting virtual machines(EC2) = Infrastructure as a Service
+Storing data on virtual drives(EBS Elastic Block Store), kind of like a hard drive for ec2 instances.
+Distributing load across machines(ELB Elastic Load Balances) - When you have multiple ec2 instances running at the same time, you want to make sure that the traffic is shared evenly. ELBs help distribute the incoming requests to your instances, so one machine isn't overloaded while others sit idle.
+Scaling the services using an auto-scaling group(ASG) - This allows ec2 to scale automatically, if your application gets more traffic, more instances are added. And if your traffic slows down, extra instances are removed. This is known as scaling in and scale out. You only pay for what you use.
+
+
+
 
 
 
