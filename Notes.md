@@ -123,7 +123,7 @@ Storing data on virtual drives(EBS Elastic Block Store), kind of like a hard dri
 Distributing load across machines(ELB Elastic Load Balances) - When you have multiple ec2 instances running at the same time, you want to make sure that the traffic is shared evenly. ELBs help distribute the incoming requests to your instances, so one machine isn't overloaded while others sit idle.
 Scaling the services using an auto-scaling group(ASG) - This allows ec2 to scale automatically, if your application gets more traffic, more instances are added. And if your traffic slows down, extra instances are removed. This is known as scaling in and scale out. You only pay for what you use.
 
-
+test
 
 
 
