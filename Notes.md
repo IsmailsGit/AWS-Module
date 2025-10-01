@@ -154,6 +154,27 @@ EC2 user data script runs with root, meaning that it has full control of the sys
 
 User data is perfect for automating deployments, why? because in larger production environments, manually logging into every instance to run setup commands would be a nightmare. With user data, you set it once, and AWS takes care of the rest.
 
+#### EC2 Instance Types Overview
+General Purpose - these are your go-to well-rounded instances. They work for a lot of different use cases, whether you're on your web server, a basic one, a small database, or other general workloads.
+
+Compute Optimized - if you need lots of processing power, these are quite useful. Compute Optimized instances give you extra CPU for tasks like heavy calculations, batch processing, or even high-performance computing. 
+
+Memory Optimized - When your application needs a lot of memory or even RAM, you go for these. Things like in-memory databases, big data processing, or high-performance computing workloads benefit from Memory Optimized instances
+
+Storage Optimized - These are designed for fast and high-throughput storage. What does that mean? If you're dealing with large datasets or running databases that require quick access to storage, these instances are the right choice.
+
+Accelerated Computing Optimized - this is where AWS steps up the game with GPUs and FPGAs* and so on. If you're doing machine learning, video processing/graphics processing these are what you need
+FPGAs* (Field-Programmable Gate Arrays) are reprogrammable hardware chips that can be customized to run specific workloads with very high efficiency, unlike general-purpose CPUs or GPUs. In AWS, they’re used through EC2 F1 instances for tasks like genome analysis, financial modeling, video processing, and machine learning inference.
+
+HPC Optimized (High-performance computing) - It's designed for intensive computing tasks, yes, that require a lot of powerful processing and even fast networking such as complex simulations, deep learning, and visual effects rendering.
+
+Instance naming example m5.2xlarge
+M = Instance class, this one is a general type, 
+5 = is the generation of the instance, AWS improves its instance over time each new generation is more powerful or efficient than the last
+2xlarge = Size within the instance class, There are small, large, xlarge, and even up to 32xlarge. The bigger the size, the more resources like CPU and memory that instance has and more expensive.
+
+
+
 
 
 
