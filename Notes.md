@@ -173,8 +173,9 @@ M = Instance class, this one is a general type,
 5 = is the generation of the instance, AWS improves its instance over time each new generation is more powerful or efficient than the last
 2xlarge = Size within the instance class, There are small, large, xlarge, and even up to 32xlarge. The bigger the size, the more resources like CPU and memory that instance has and more expensive.
 
-
-
+### Security Groups(SGs)
+Security groups control what traffic is allowed into and out of your ec2 instances.
+They are the backbone of network security for ec2 instances.
 
 
 
