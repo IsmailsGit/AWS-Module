@@ -1,4 +1,4 @@
-# Intro to AWS
+ # Intro to AWS
 AWS (Amazon Web Services) is a cloud computing platform that provides on-demand services like computing power, storage, and databases to help businesses and developers build, deploy, and scale applications efficiently.
 
 AWS allows you to build sophisticated and scalable applications and regardless if you're a small or big company aws will be able to support you in terms flexibility and performance. 
@@ -173,9 +173,27 @@ M = Instance class, this one is a general type,
 5 = is the generation of the instance, AWS improves its instance over time each new generation is more powerful or efficient than the last
 2xlarge = Size within the instance class, There are small, large, xlarge, and even up to 32xlarge. The bigger the size, the more resources like CPU and memory that instance has and more expensive.
 
-### Security Groups(SGs)
+### Introduction to Security Groups(SGs)
 Security groups control what traffic is allowed into and out of your ec2 instances.
 They are the backbone of network security for ec2 instances.
+
+Security groups only deal with allow rules, unlike normal firewalls where you can have both allow and deny rules, security groups only focus on what's allowed anything else is blocked by default.
+
+You can set rules that specify what traffic is allowed based on ip addresses or even other security groups.
+
+Security groups are stateful - Means if you allow inbound traffic, the corresponding outbound traffic is automatically allowed and vice versa.
+
+#### Security Groups Deeper Dive
+Security groups act as a "firewall" on ec2 instances
+They regulate:
+Access to Ports(which ports are open on your instance)
+Authorised IP ranges - IPv4 and IPv6
+Control of inbound network(from other to the instance)
+Control of outbound network(from instance to other)
+
+It's good practise to keep your security groups as tight as possible, you should only open the port you absolutely need and limit access to trusted ips, this minimises your instance exposure to any potential attacks.
+
+
 
 
 
