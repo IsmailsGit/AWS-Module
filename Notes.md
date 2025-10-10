@@ -194,7 +194,14 @@ Control of outbound network(from instance to other)
 It's good practise to keep your security groups as tight as possible, you should only open the port you absolutely need and limit access to trusted ips, this minimises your instance exposure to any potential attacks.
 
 #### Security Groups Good to know
-1.Security groups can be attached to multiple instances, can be reused
+1.Security groups can be attached to multiple instances, can be reused.
+2. Locked down to a region/VPC combination, can't use a security group from one region or vpc in another.
+3. Security groups live "outside" the ec2 instance - if traffic is blocked the ec2 instance won't see it.
+4. Good practise to maintain one separate security group for SSH access - this way you can tightly control what ips can access your instances via SSH without affecting other rules.
+5.If your application is not accessible(time out) then it's a security group issue blocking traffic.
+6. If your application gives a "connection refused" error then it's an application error or instance issue or config issue.
+7. All inbound traffic is blocked by default - needs to be manually configured.
+8. All outbound traffic is authorised by default - needs to be manually configured.
 
 
 
