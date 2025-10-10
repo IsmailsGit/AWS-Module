@@ -203,7 +203,18 @@ It's good practise to keep your security groups as tight as possible, you should
 7. All inbound traffic is blocked by default - needs to be manually configured.
 8. All outbound traffic is authorised by default - needs to be manually configured.
 
+#### Referencing other security groups
+Normally security groups define rules using ip addresses but if you want to control access between instances and those instances might change ips you would reference other security groups.
 
+By referencing other security groups in your security group you are allowing traffic from any instances in those security groups.
 
+Why is this useful? - It makes managing security easier. Instead of constantly updating IP addresses, having to manually adjust firewalls, you can just authorize entire SGs to communicate with each other
+
+Examples - 
+For example, in a microservice architecture, you might want to allow all instances in one SG.
+Another example, a database tier, to talk to all instances in another SG like an app tier
+Now this method simplifies configuration by using SGs as references rather than certain IPs.
+
+This kind of referencing is especially helpful in dynamic environments like auto-scaling groups or clusters where instances might come and go, but you still maintain secure communication between them
 
 
