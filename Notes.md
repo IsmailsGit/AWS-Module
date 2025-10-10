@@ -193,6 +193,8 @@ Control of outbound network(from instance to other)
 
 It's good practise to keep your security groups as tight as possible, you should only open the port you absolutely need and limit access to trusted ips, this minimises your instance exposure to any potential attacks.
 
+#### Security Groups Good to know
+1.Security groups can be attached to multiple instances, can be reused
 
 
 
