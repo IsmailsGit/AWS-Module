@@ -217,4 +217,20 @@ Now this method simplifies configuration by using SGs as references rather than 
 
 This kind of referencing is especially helpful in dynamic environments like auto-scaling groups or clusters where instances might come and go, but you still maintain secure communication between them
 
+#### Classic Ports to know
+
+22 = SSH(Secure Shell) - SSH is used to securely log in to a linux instance, you often use this to manage your instances, you should always restrict access to port 22 to only trusted IPs.
+
+21 = FTP(File Transfer Protocol) - Used to upload files into a file share, It's not very secure so its being replaced for more secure options like SFTP.
+
+22 = SFTP(Secure File Transfer Protocol) - Uploads files using SSH, also uses port 22 because SFTP is the secure version of FTP it uses SSH thats why it has the same port.
+
+
+
+
+
+
+
+
+
 
