@@ -225,6 +225,19 @@ This kind of referencing is especially helpful in dynamic environments like auto
 
 22 = SFTP(Secure File Transfer Protocol) - Uploads files using SSH, also uses port 22 because SFTP is the secure version of FTP it uses SSH thats why it has the same port.
 
+80 = HTTP - Used to access unsecured websites, web traffic doesn't use encryption.
+
+443 = HTTPS - Used to access secured websites over TLS, it encrypts web traffic which is essential for websites handling sensitive data.
+
+53 = DNS - DNS is responible for translating domain names into ip addresses, essential for any application that requires domain name resolution.
+
+3389 = RDP(Remote Desktop Protocol) - RDP allows you to log into a windows instance it's commonly used for management of windows based instances.
+
+25 = SMTP
+
+3306 = MySQL protocol
+
+5432 = Postgres
 
 
 
