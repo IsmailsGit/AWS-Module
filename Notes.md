@@ -239,6 +239,12 @@ This kind of referencing is especially helpful in dynamic environments like auto
 
 5432 = Postgres
 
+#### Private vs Public IPs(IPv4)
+
+
+
+
+
 
 
 
