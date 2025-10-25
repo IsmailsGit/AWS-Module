@@ -257,7 +257,6 @@ Why is the internet gateway so important?  - Without the internet gateway, just 
 An interesting point is that private IPs can be reused across different networks like company A and company B. However, public IPs are globally unique, which is why each company gets a different public IP when connected to the internet.
 
 #### Private vs Public IP (IPv4) Differences
-
 Public IP                            
 <br> Public IP means a machine can be identified on the internet(WWW) 
 
