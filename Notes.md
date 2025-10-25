@@ -239,15 +239,39 @@ This kind of referencing is especially helpful in dynamic environments like auto
 
 5432 = Postgres
 
-#### Private vs Public IPs(IPv4)
+#### Private vs Public IPs Example(IPv4)
+Example - Relates to how routers function at layer, directing traffic between different networks. In this example traffic is moving between private and public networks
+![Screenshot](https://github.com/user-attachments/assets/7e2d42b8-5ba5-4a18-966d-c57c9e59047e)
+Both companies have their own private networks using private ip addresses
+<br> These private ips are not routable on the public internet meaning they can't communicate directly with an external website or service.
 
+So to reach the internet they would use an internet gateway, an internet gateway is similar to your home router. 
+<br> Your router assigns private IPs to the devices. When you visit a website, your router acts as the middleman, translating those private IP addresses into a public IP so your traffic can travel over the internet to the other servers. 
 
+In this diagram, each company's internet gateway is taking traffic from their private networks and translating it into a public IP. This allows them to communicate with web servers which have their own public IPs.
 
+The router at home or the internet gateway at a company both perform NAT(network address translation). They're converting private IPs to public IPs and vice versa, enabling devices in a private network to communicate with the public internet.
 
+Why is the internet gateway so important?  - Without the internet gateway, just like without your home router, the private network would be isolated, meaning company A and company B wouldn't be able to access websites or services on the public internet. The internet gateway is essential for moving data between these networks.
 
+An interesting point is that private IPs can be reused across different networks like company A and company B. However, public IPs are globally unique, which is why each company gets a different public IP when connected to the internet.
 
+#### Private vs Public IP (IPv4) Differences
 
+Public IP                            
+<br> Public IP means a machine can be identified on the internet(WWW) 
 
+Must be unique across the internet no two devices can have the same public ip,like how no two houses can have the same postcode.
+
+Can be geo-located easily, someone can generally tell the country and city you're machine is in.
+
+Private IP
+<br> A private ip is only used inside a private network like your home or a companies internal network. Devices within that private network can identify each other, but they can't be seen directly on them from the internet.
+
+While a public must be unique globally, the private ip only needs be unique within its own private network. Means multiple networks can use the same private ip ranges without a problem.
+
+Machines connect to the public internet using a NAT+ internet gateway(a proxy).
+<br> Only a specified range of ips can be used as private ips.
 
 
 
