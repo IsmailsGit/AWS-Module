@@ -272,6 +272,14 @@ While a public must be unique globally, the private ip only needs be unique with
 Machines connect to the public internet using a NAT+ internet gateway(a proxy).
 <br> Only a specified range of ips can be used as private ips.
 
+#### Elastic IPs
+Usually if you stop and restart an instance, it would get assigned a new public ip address because aws allocates public ips dynamically.
+
+If you need a fixed public ip for your instance you need an elastic IP
+
+An elastic ip is a public ipv4 ip you own as long as you don't delete it.
+
+
 
 
 
