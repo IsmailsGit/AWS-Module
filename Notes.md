@@ -272,6 +272,23 @@ While a public must be unique globally, the private ip only needs be unique with
 Machines connect to the public internet using a NAT+ internet gateway(a proxy).
 <br> Only a specified range of ips can be used as private ips.
 
+Type of IP	         
+Private IP	
+Where it lives	
+Stored directly on the ENI	
+Description
+Used for internal VPC communication
+
+Type of IP
+Public/Elastic IP
+Where it lives	
+Mapped to the ENI by AWS (via NAT or routing tables)	
+Description
+Used for communication with the internet
+
+
+
+
 #### Elastic IPs
 Usually if you stop and restart an instance, it would get assigned a new public ip address because aws allocates public ips dynamically.
 
@@ -279,6 +296,13 @@ If you need a fixed public ip for your instance you need an elastic IP
 
 An elastic ip is a public ipv4 ip you own as long as you don't delete it.
 
+You can attach it to one instance at a time, but you can remap it if you need to.
+
+#### Elastic Network Interface
+The ENI in aws is like a virtual network interface card, it holds a private ip that is used to communicate within a vpc. It also holds information about the Mac address and security groups. Once a public/elastic ip is mapped to it, it is able to use it to connect to the internet and receive traffic.
+
+
+#### When to use Elastic IP
 
 
 
