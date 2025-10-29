@@ -303,7 +303,21 @@ The ENI in aws is like a virtual network interface card, it holds a private ip t
 
 
 #### When to use Elastic IP
+With an Elastic IP address, you can mask the failure of an instance or software by rapidly remapping the address to another instance in your account. - Can be useful in scenarios when we need to switch traffic from one instance to another without downtime.
 
+However you can only have 5 elastic ip's in your account(you can ask aws to increase that).
+
+Best practise is to avoid using elasic ips unless absolutely necessary, reasons why:
+They often reflect poor architectural decisions because there are better ways to manage traffic and ips in the cloud environment.
+Instead use a random public IP and register a dns name to it so you can still have a consistent way to connect to your instance, right, without needing to rely on a static IP address or use a load balancer.
+
+### Storage
+#### What's an EBS Volume
+An EBS volume is like an network drive you can attach to your ec2 instance while they run, it's not a physical drive but it works in a similar way.
+
+It allows your instances to persist data, even if you stop or terminate your instance the data on the ebs volume remains intact unless you choose to delete it.
+
+They are bound to a specific availability zone, you can't move ir across zones but you can snapshot the volume and create new ones in different zones needed.
 
 
 
