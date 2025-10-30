@@ -358,8 +358,15 @@ It's easy to implement thanks to EC2 and the process can even be automated thank
 
 Horizontal scaling is key for systems that need to handle unpredictable or fluctuating workloads.
 
+#### High Availability(HA)
+High availability refers to running your application or system in multiple locations to ensure that if one part of the infrastructure goes down another part can take over.
 
+HA usually goes hand in hand with horizontal scaling because to be highly available you need multiple instances/systems across different locations.
 
+The goal of high availability is to survive a data centre loss, if a data centre or az goes down your application should be able to keep running in another zone without downtime.
+
+High availability can be passive like RDS Multi AZ.
+And it can be active like horizontal scaling
 
 
 
