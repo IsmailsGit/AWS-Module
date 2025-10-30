@@ -333,8 +333,30 @@ However EFS is expensive, so it's best to use it when your application truly nee
 
 
 ### Load Balancing and Scalability
-#### High Availability and Scalability 
+#### Scalability and High Availability
+Scalability means that an application or system can handle increasing loads by adapting to demand.
 
+There are two types of scalability - Vertical Scalability and Horizontal Scalability.
+
+#### Vertical Scalability
+Vertical Scalability means increasing the size of the instance/resource you're using,you're adding more power to the server instead of adding more servers.
+
+For example your applications runs on a t2.micro, scaling it vertically menas running it on a t2.large.
+
+Vertical scalability is common for non distributed systems such as databases.
+There's usually a hardware limit to how much you can vertically scale.
+
+#### Horizontal scalability/Elastic Scaliung
+Horizontal scalability means increasing the number of instances/systems for your application/system to handle more load
+
+Horizontal scaling implies distributed systems, instead of relying on one powerful machine, you spread the workload across muliple smaller ones.
+
+For example if a website gets a huge spike in traffic, with horizonral scaling you can spin up more instances to handle extra traffic and scale them down once the traffic reduces.
+
+That flexibility is why Horizontal Scaling is often called Elastic Scaling
+It's easy to implement thanks to EC2 and the process can even be automated thanks to auto scaling groups.
+
+Horizontal scaling is key for systems that need to handle unpredictable or fluctuating workloads.
 
 
 
