@@ -332,6 +332,10 @@ EFS is scalable, it automatically grows as you add more data, no need to worry a
 However EFS is expensive, so it's best to use it when your application truly needs shared storage across multiple instances.
 
 
+### Load Balancing and Scalability
+#### High Availability and Scalability 
+
+
 
 
 
