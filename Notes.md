@@ -312,12 +312,31 @@ They often reflect poor architectural decisions because there are better ways to
 Instead use a random public IP and register a dns name to it so you can still have a consistent way to connect to your instance, right, without needing to rely on a static IP address or use a load balancer.
 
 ### Storage
-#### What's an EBS Volume
+#### What's an EBS(Elastic Block Store) Volume
 An EBS volume is like an network drive you can attach to your ec2 instance while they run, it's not a physical drive but it works in a similar way.
 
-It allows your instances to persist data, even if you stop or terminate your instance the data on the ebs volume remains intact unless you choose to delete it.
+It allows your instances to persist data, even if you stop or terminate your instance the data on the ebs volume remains intact unless you choose to delete it. It can be reconnected to the same instance or another instance within the same az.
 
-They are bound to a specific availability zone, you can't move ir across zones but you can snapshot the volume and create new ones in different zones needed.
+They are bound to a specific availability zone, you can't move it across zones but you can snapshot the volume and create new ones in different zones needed.
+
+AMI
+An Amazon Machine Image (AMI) is a preconfigured template that contains the operating system, application server, and software needed to launch and create new EC2 instances.
+
+#### EFS(Elastic File System)
+EFS is a managed NFS(network file system) which allows you to create a shared file system that can be mounted on multiple instances at the same time. It's like a network drive all instances can access.
+
+EFS is designed to be used in different AZ's, its reliable as your data is automatically replicated.
+
+EFS is scalable, it automatically grows as you add more data, no need to worry about resizing the storage volume.
+
+However EFS is expensive, so it's best to use it when your application truly needs shared storage across multiple instances.
+
+
+
+
+
+
+
 
 
 
