@@ -368,6 +368,40 @@ The goal of high availability is to survive a data centre loss, if a data centre
 High availability can be passive like RDS Multi AZ.
 And it can be active like horizontal scaling
 
+#### Load Balancing
+Load balancing are servers that distribute traffic across multiple servers or ec2 instances, so that one server doesn't get overwhemled.
+
+The elastic load balancer sits in between your user and your ec2 instances, when traffic comes in, it forwards the request to the ec2 instances downstream. It is constantly checking which instances are healthy and directs traffic to the ones that can handle it. It does this automatically.
+
+Elastic Load Balancer(ELB) is AWS's version of load balancers. AWS handles the updates, maintenance and high availability.
+
+Why use a Load Balancer? Not including the obvious reasons like distribute traffic
+<br> Provides SSL termination(HTTPS) - you can configure the load balancer to handle ssl certificates and https traffic for websites. The LB handles the encrypting and decrypting of traffic.
+<br> Enforce stickiness with cookies - Known as session persistence an lb can ensure that when needed users are sent back to same instance for their requests using cookies.
+<br> Health checks - Check to see if your instances are healthy by sending a request to a port/route if it responds with 200 its healthy, if unhealthy it sends traffic to another instance. 
+<br> Separate public traffic(user facing) from private traffic(internal) - Ensures security and proper flow.
+
+Reverse Proxy
+A reverse proxy is similar to a load balancer but with extra functions.
+It also sits between your users and your servers.
+Reverse proxy features can route traffic based on the content of the request, routing traffic and different services.
+
+Types of load balancers
+Classic Load Balancer(CLB) - It's the old generation of load balancers that was introduced to AWS in 2009, not commonly used today. Supports basic HTTP, HTTPS, TCP, and SSL traffic but it lacks the advanced features of the newer load balancers.
+
+Application Load Balancer(ALB) - Released in 2016, designed for HTTP, HTTPS, and WebSocket traffic, making it ideal for modern web apps. It can make routing decisions based on the content of the request, like URLs, headers, query parameters, even cookies. Operates at layer 7, the application layer.
+<br> ALB
+<br> Routing based on path in url(coderco.io/users and coderco.io/posts)
+<br> Routing based on hostnames in url (blog.coderco.io and news.coderco.io)
+<br> Routing based on query string or headers which is a request coming from a mobile phone or desktop.
+Has a port mapping feature to redirect to a dynamic port in ECS, this allows it to redirect traffic to containers running on different ports. ensures that even as services are deployed and scaled across various ports, the ALB knows where to send traffic.
+
+Network Load Balancers(NLB) - These are layer 4 load balancers at the transport layer, they're built for TCP and HTTP traffic. Designed for high-performance scenarios where you need very low latency. NLB is ideal for handling millions of requests per second, making it a good choice for high throughput, low latency applications, such as real-time gaming, or even high-frequency trading systems.
+
+Gateway Load Balancer(GWLB) - It operates at layer 3, the network layer, and it works with the IP protocol. Designed to help you deploy, scale, and manage third-party network applications like firewalls, intrusion detection systems, and even traffic analyzers in your VPCs.
+
+
+     
 
 
 
