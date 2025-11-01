@@ -387,7 +387,7 @@ It also sits between your users and your servers.
 Reverse proxy features can route traffic based on the content of the request, routing traffic and different services.
 
 Types of load balancers
-Classic Load Balancer(CLB) - It's the old generation of load balancers that was introduced to AWS in 2009, not commonly used today. Supports basic HTTP, HTTPS, TCP, and SSL traffic but it lacks the advanced features of the newer load balancers.
+<br> Classic Load Balancer(CLB) - It's the old generation of load balancers that was introduced to AWS in 2009, not commonly used today. Supports basic HTTP, HTTPS, TCP, and SSL traffic but it lacks the advanced features of the newer load balancers.
 
 Application Load Balancer(ALB) - Released in 2016, designed for HTTP, HTTPS, and WebSocket traffic, making it ideal for modern web apps. It can make routing decisions based on the content of the request, like URLs, headers, query parameters, even cookies. Operates at layer 7, the application layer.
 <br> ALB
@@ -400,6 +400,27 @@ Network Load Balancers(NLB) - These are layer 4 load balancers at the transport 
 
 Gateway Load Balancer(GWLB) - It operates at layer 3, the network layer, and it works with the IP protocol. Designed to help you deploy, scale, and manage third-party network applications like firewalls, intrusion detection systems, and even traffic analyzers in your VPCs.
 
+Target groups are groups of resources that your ALB routes traffic to.
+<br> Types of target groups
+<br> EC2 Instances - Can be managed by an auto scaling group to auto add or remove instances based on load, the alb routes http traffic to these instances, it makes sure requests are balanced between them.
+<br> ECS tasks - Alb can route traffic to ecs tasks which are essentially containers running your applications, ideal for microservices and container apps.
+<br> Lambda functions - Routes http requests to lamda functions, the load balancer translates the request into a json event, which the lambda function can process. Great for serverless application where you don't rely on infrastructure.
+<br> IP addresses - Must be private because the ALB routes traffic inside the VPC network.
+<br> Can route to multiple target groups(several services) with a single ALB.
+<br> Health checks - Health checks are at the target group level
+
+
+
+
+
+
+
+
+Serverless
+The ALB routes traffic to lambda functions, which the ALB then converts the http request to a json event that lambda can process. In this way Lambda behaves like a web server without EC2 — fully serverless.                                          Benefits are:                                                                       No infrastructure to manage (no EC2, no autoscaling groups)
+Scales automatically based on requests
+Pay-per-request pricing
+Can use ALB routing features (path/host based) 
 
      
 
