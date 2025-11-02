@@ -445,7 +445,8 @@ Your user connects via HTTPS, which is encrypted over the internet. The load bal
 
 ### Serverless
 
-The ALB routes traffic to lambda functions, which the ALB then converts the http request to a json event that lambda can process. In this way Lambda behaves like a web server without EC2 — fully serverless.                                          Benefits are:                                                                       No infrastructure to manage (no EC2, no autoscaling groups)
+The ALB routes traffic to lambda functions, which the ALB then converts the http request to a json event that lambda can process. In this way Lambda behaves like a web server without EC2 — fully serverless.                               Benefits are:  
+No infrastructure to manage (no EC2, no autoscaling groups)
 Scales automatically based on requests
 Pay-per-request pricing
 Can use ALB routing features (path/host based) 
