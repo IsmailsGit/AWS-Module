@@ -377,7 +377,7 @@ Elastic Load Balancer(ELB) is AWS's version of load balancers. AWS handles the u
 
 Why use a Load Balancer? Not including the obvious reasons like distribute traffic
 <br> Provides SSL termination(HTTPS) - you can configure the load balancer to handle ssl certificates and https traffic for websites. The LB handles the encrypting and decrypting of traffic.
-<br> Enforce stickiness with cookies - Known as session persistence an lb can ensure that when needed users are sent back to same instance for their requests using cookies.
+<br> Enforce stickiness with cookies - Known as session persistence an ALB can ensure that when needed users are sent back to same instance for their requests using cookies. Can cause an imbalance due to the load over from the backend ec2 instances. 
 <br> Health checks - Check to see if your instances are healthy by sending a request to a port/route if it responds with 200 its healthy, if unhealthy it sends traffic to another instance. 
 <br> Separate public traffic(user facing) from private traffic(internal) - Ensures security and proper flow.
 
@@ -400,8 +400,7 @@ Has a port mapping feature to redirect to a dynamic port in ECS, this allows it 
 
 <br> Your application servers won't see the client's IP directly. When a client connects to the AOB, their connection is terminated at the load balancer. This means the request appears to come through the AOB's private IP and not the client's IP. ---> AWS has a way to pass along the client's actual IP address using a special HTTP header. This is called the X-Forwarded-For, which you might have seen before. Now, this header contains the true client IP and it's up to your application to read it if you need the real client's address.
 
-
-Network Load Balancers(NLB) - These are layer 4 load balancers at the transport layer, they're built for TCP and HTTP traffic. Designed for high-performance scenarios where you need very low latency. NLB is ideal for handling millions of requests per second, making it a good choice for high throughput, low latency applications, such as real-time gaming, or even high-frequency trading systems.
+Network Load Balancers(NLB) - These are layer 4 load balancers at the transport layer, they're built for TCP, UDP traffic. Designed for high-performance scenarios where you need very low latency. NLB is ideal for handling millions of requests per second, making it a good choice for high throughput, low latency applications, such as real-time gaming, or even high-frequency trading systems.
 
 Gateway Load Balancer(GWLB) - It operates at layer 3, the network layer, and it works with the IP protocol. Designed to help you deploy, scale, and manage third-party network applications like firewalls, intrusion detection systems, and even traffic analyzers in your VPCs.
 
@@ -414,11 +413,30 @@ Target groups are groups of resources that your ALB routes traffic to.
 <br> Can route to multiple target groups(several services) with a single ALB.
 <br> Health checks - Health checks are at the target group level
 
+#### SSL(Secure Sockets Layer)/TLS(Transport Layer Security) 
+An SSL certificate allows traffic between your clients and your load balancer to be encrypted in transit(in-flight encryption) as it travels over the internet.
+
+SSL is used to encrypt connections but TLS is a newer version
+<br> TLS certificates are mainly used but it's refered to as SSL.
+
+Public SSL certificates are issued by Certificate Authorities(CA), they're trusted third parties that verify the identity of a website.
+<br> Common CA's are Comodo, Symantec, GoDaddy, Digicert, Letsencrypt etc.
+
+SSL certificates have an expiration date that you set and must be renewed.
 
 
+Load Balancer - SSL Certificates
+The load balancer uses an X.509 certificate(SSL/TLS server certificate)
+You can manage certificates using ACM(AWS Certificate Manager)
+You can create and upload your own certificates alternatively
+HTTPS listener(process on ALB that listens for HTTP requests on a port e.g., 80):
+You would need to specify a default certificate
+You can add an optional list of certs to support multiple domains.
+Clients can use SNI(Server Name Indication) to specify the hostname they want to connect to.
+Ability to specify a security policy to support older versions of SSL/TLS(legacy clients).
 
-
-
+Workflow
+Your user connects via HTTPS, which is encrypted over the internet. The load balancer handles that connection. Once you're inside your VPC, the load balancer forwards the request using plain old HTTP. Now this is private traffic, remember? So encryption isn't necessary. The request then reaches the EC2 instance. That's it, straightforward.
 
 
 
