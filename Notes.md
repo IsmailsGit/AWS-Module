@@ -396,6 +396,11 @@ Application Load Balancer(ALB) - Released in 2016, designed for HTTP, HTTPS, and
 <br> Routing based on query string or headers which is a request coming from a mobile phone or desktop.
 Has a port mapping feature to redirect to a dynamic port in ECS, this allows it to redirect traffic to containers running on different ports. ensures that even as services are deployed and scaled across various ports, the ALB knows where to send traffic.
 
+<br> ALB gives each load balancer a fixed hostname in the format of xxxwhatever.region.aob.amazon.com. This is the URL your clients will use to access your services through the load balancer.
+
+<br> Your application servers won't see the client's IP directly. When a client connects to the AOB, their connection is terminated at the load balancer. This means the request appears to come through the AOB's private IP and not the client's IP. ---> AWS has a way to pass along the client's actual IP address using a special HTTP header. This is called the X-Forwarded-For, which you might have seen before. Now, this header contains the true client IP and it's up to your application to read it if you need the real client's address.
+
+
 Network Load Balancers(NLB) - These are layer 4 load balancers at the transport layer, they're built for TCP and HTTP traffic. Designed for high-performance scenarios where you need very low latency. NLB is ideal for handling millions of requests per second, making it a good choice for high throughput, low latency applications, such as real-time gaming, or even high-frequency trading systems.
 
 Gateway Load Balancer(GWLB) - It operates at layer 3, the network layer, and it works with the IP protocol. Designed to help you deploy, scale, and manage third-party network applications like firewalls, intrusion detection systems, and even traffic analyzers in your VPCs.
@@ -416,7 +421,12 @@ Target groups are groups of resources that your ALB routes traffic to.
 
 
 
-Serverless
+
+
+
+
+### Serverless
+
 The ALB routes traffic to lambda functions, which the ALB then converts the http request to a json event that lambda can process. In this way Lambda behaves like a web server without EC2 — fully serverless.                                          Benefits are:                                                                       No infrastructure to manage (no EC2, no autoscaling groups)
 Scales automatically based on requests
 Pay-per-request pricing
