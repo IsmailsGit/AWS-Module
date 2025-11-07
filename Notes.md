@@ -426,18 +426,24 @@ SSL certificates have an expiration date that you set and must be renewed.
 
 
 Load Balancer - SSL Certificates
-The load balancer uses an X.509 certificate(SSL/TLS server certificate)
-You can manage certificates using ACM(AWS Certificate Manager)
-You can create and upload your own certificates alternatively
-HTTPS listener(process on ALB that listens for HTTP requests on a port e.g., 80):
-You would need to specify a default certificate
-You can add an optional list of certs to support multiple domains.
-Clients can use SNI(Server Name Indication) to specify the hostname they want to connect to.
-Ability to specify a security policy to support older versions of SSL/TLS(legacy clients).
+<br> The load balancer uses an X.509 certificate(SSL/TLS server certificate)
+<br> You can manage certificates using ACM(AWS Certificate Manager)
+<br> You can create and upload your own certificates alternatively
+<br> HTTPS listener(process on ALB that listens for HTTP requests on a port e.g., 80):
+<br> You would need to specify a default certificate
+<br> You can add an optional list of certs to support multiple domains.
+Clients can use SNI(Server Name Indication) to specify the hostname they want to connect to (SNI allows you to host multiple websites on the same web server with different SSL certificates).
+<br> Ability to specify a security policy to support older versions of SSL/TLS(legacy clients).
 
 Workflow
-Your user connects via HTTPS, which is encrypted over the internet. The load balancer handles that connection. Once you're inside your VPC, the load balancer forwards the request using plain old HTTP. Now this is private traffic, remember? So encryption isn't necessary. The request then reaches the EC2 instance. That's it, straightforward.
+<br> Your user connects via HTTPS, which is encrypted over the internet. The load balancer handles that connection. Once you're inside your VPC, the load balancer forwards the request using plain old HTTP. Now this is private traffic, remember? So encryption isn't necessary. The request then reaches the EC2 instance. That's it, straightforward.
 
+Deregisteration Delay/Connection Draining
+Deregistration delay is when you're deregistering an instance from a load balancer because its unhealthy or you're scaling down and you want to don't want to cut off any ongoing connections immediately as that would be very bad for user experience.
+
+In-flight requests to the user instances are allowed to complete. The load balancer stops sending new requests to that instance, but it waits for the active request to finish up. And you can control how long this process takes, between 1 to even 3,600 seconds.
+
+#### Auto Scaling Group
 
 
 
