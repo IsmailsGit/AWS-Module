@@ -444,6 +444,8 @@ Deregistration delay is when you're deregistering an instance from a load balanc
 In-flight requests to the user instances are allowed to complete. The load balancer stops sending new requests to that instance, but it waits for the active request to finish up. And you can control how long this process takes, between 1 to even 3,600 seconds.
 
 #### Auto Scaling Group
+The goal of an auto scaling group
+
 
 
 
