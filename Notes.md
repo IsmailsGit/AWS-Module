@@ -449,11 +449,11 @@ Auto scaling groups add or remove instances according to the load on your websit
 The goal of an ASG is to:
 Scale out(add EC2 instances) to match an increased load.
 Scale in(remove EC2 instances) to match a decreased load.
-Ensure we have a minimum and a maximum number of ec2 instances running.
+Ensure we have a minimum(during low traffic periods) and a maximum number(during high traffic periods) of ec2 instances running.
 Automatically register new instances to a load balancer.
 Recreate an ec2 instance in case a previous one is terminated(e.g. if unhealthy)
 
-
+ASG's are free, you only pay for the ec2 instances they manage.
 
 
 
