@@ -455,7 +455,20 @@ Recreate an ec2 instance in case a previous one is terminated(e.g. if unhealthy)
 
 ASG's are free, you only pay for the ec2 instances they manage.
 
+Scaling Policies
+<br> Dynamic Scaling:
+<br> Target Tracking Scaling - When you want the average ASG cpu to stay around 40%,if it increases it adds more instances.
+<br> Simple/Step Scaling - When a CloudWatch alarm is triggered e.g. cpu > 70% then add 2 units.
+<br> Scheduled Scaling - Anticipate a scaling based on known usage pattern.
 
+### Containers AWS
+Amazon Elastic Container Service(Amazon ECS) is amazons own container orchestration platform. It's a fully managed service that allows you to run Docker containers without having to install and manage orchestration software. You can define how many containers to run, what images to use, how they should interact, all through a simple interface.
+
+Amazon Elastic Kubernetes Service(Amazons EKS) is amazons managed kubernetes service(open source) Kubernetes is an open source container orchestration platform. Amazon offers a way to use it without managing the control plane yourself. With EKS, you can take advantage of all the Kubernetes features like load balancing, scaling, while AWS handles the management of the Kubernetes control plane.
+
+AWS Fargate is amazons own Serverless container platform which works with ECS and EKS. The difference is that Fargate removes the need for you to manage servers or EC2 instances. You just define the task and Fargate provisions the infrastructure automatically.
+
+Amazon ECR is a container image repository where you can store, manage, and also retrieve your Docker images. Think of it like Docker Hub but fully integrated with AWS services.
 
 
 ### Serverless
