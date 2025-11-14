@@ -472,6 +472,15 @@ Amazon ECR is a container image repository where you can store, manage, and also
 
 
 ### Serverless
+With Serverless developers don't have to manage servers, they just deploy code/functions
+
+
+
+
+
+
+
+
 
 The ALB routes traffic to lambda functions, which the ALB then converts the http request to a json event that lambda can process. In this way Lambda behaves like a web server without EC2 — fully serverless.
 <br> Benefits are:  
