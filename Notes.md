@@ -483,9 +483,15 @@ Dynamo DB: DynamoDB is a fully-managed, serverless, NoSQL database that scales a
 
 AWS Cognito: This service helps manage user authentication, making it easy to handle logins and signups in your application. It's great for scaling your application without manual infrastructure.
 
-AWS API Gateway: 
+AWS API Gateway: This kind of acts as a bridge between your users and Lambda functions. It allows you to create and monitor APIs which interact with your backend services.
 
+AWS S3: S3 is a serverless offering. If you think about it, it's used for storing files and static content. Now, it's completely serverless and scales automatically based on the amount of data stored.
 
+AWS SNS(Simple Notification Service) and SQS(Simple Queue Service): These services help with communication between different parts of your system. SNS handles notifications and SQS is for queuing messages between services.
+
+AWS Kinesis Data Firehose: Can be used to load streaming data into AWS for analysis and storage. And this is great for real-time analytics without managing any servers.
+
+AWS Aurora Serverless: This is a fully-managed, serverless database that autoscales based on demand.
 
 
 
