@@ -472,10 +472,18 @@ Amazon ECR is a container image repository where you can store, manage, and also
 
 
 ### Serverless
-With Serverless developers don't have to manage servers, they just deploy code/functions
+With Serverless, developers don't have to manage servers, they just deploy code/functions. For example, in AWS, you use Lambda functions, which get triggered by events.
+<br> It includes anything that's managed for you without needing to think about servers such as databases, messaging, storage etc.
+<br> Serverless does not mean there are no servers, just that AWS manages the servers for you behind the scenes.
 
+##### AWS Serverless Servers
+AWS Lambda: The core of AWS service offerings. You just write your code in a function, upload it, and AWS Lambda runs it for you. No need to manage any servers.
 
+Dynamo DB: DynamoDB is a fully-managed, serverless, NoSQL database that scales automatically. No need to worry about provisioning or managing database servers
 
+AWS Cognito: This service helps manage user authentication, making it easy to handle logins and signups in your application. It's great for scaling your application without manual infrastructure.
+
+AWS API Gateway: 
 
 
 
