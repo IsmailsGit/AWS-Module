@@ -498,19 +498,36 @@ AWS Step Functions: If you have workflows that, for example, involve many or mul
 AWS Fargate: Fargate is the serverless compute option for containers, right? You don't need to manage any of these EC2 instances. AWS handles that while you just focus on your containers.
 
 Benefits of Lambda
-Short executions - Lambda is meant for a quick task, it has a runtime limit of 50 minutes.
-Runs on demand - You only pay per request and compute time, you don't pay for any idle time.
-Integrated with AWS's services, makes everything smoother. And with many programming languages.
-Easy monitoring through AWS's CloudWatch
+<br> Short executions - Lambda is meant for a quick task, it has a runtime limit of 50 minutes.
+<br> Runs on demand - You only pay per request and compute time, you don't pay for any idle time.
+<br> Integrated with AWS's services, makes everything smoother. And with many programming languages.
+<br> Easy monitoring through AWS's CloudWatch
+
+# AWS Networking
+## Amazon VPC(Virtual Private Cloud)
+
+A VPC is like your own private network in the cloud where you can isolate and control your resources and control who has access to it, also where and how traffic flows.
+
+#### Understanding CIDR - IPv4
+Classless Inter-Domain Routing - A method for allocating IP addresses 
 
 
 
-The ALB routes traffic to lambda functions, which the ALB then converts the http request to a json event that lambda can process. In this way Lambda behaves like a web server without EC2 — fully serverless.
-<br> Benefits are:  
-<br> No infrastructure to manage (no EC2, no autoscaling groups)
-<br> Scales automatically based on requests
-<br> Pay-per-request pricing
-<br> Can use ALB routing features (path/host based) 
+
+
+
+
+
+
+
+
+
+
+
+
+## DNS(Route53)
+
+## CDN(CloudFront)
 
      
 
