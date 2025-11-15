@@ -461,7 +461,7 @@ Scaling Policies
 <br> Simple/Step Scaling - When a CloudWatch alarm is triggered e.g. cpu > 70% then add 2 units.
 <br> Scheduled Scaling - Anticipate a scaling based on known usage pattern.
 
-### Containers AWS
+### AWS Containers ECS, EKS, Fargate and ECR
 Amazon Elastic Container Service(Amazon ECS) is amazons own container orchestration platform. It's a fully managed service that allows you to run Docker containers without having to install and manage orchestration software. You can define how many containers to run, what images to use, how they should interact, all through a simple interface.
 
 Amazon Elastic Kubernetes Service(Amazons EKS) is amazons managed kubernetes service(open source) Kubernetes is an open source container orchestration platform. Amazon offers a way to use it without managing the control plane yourself. With EKS, you can take advantage of all the Kubernetes features like load balancing, scaling, while AWS handles the management of the Kubernetes control plane.
@@ -493,6 +493,15 @@ AWS Kinesis Data Firehose: Can be used to load streaming data into AWS for analy
 
 AWS Aurora Serverless: This is a fully-managed, serverless database that autoscales based on demand.
 
+AWS Step Functions: If you have workflows that, for example, involve many or multiple Lambda functions or services, Step Functions helps you manage and monitor these workflows seamlessly.
+
+AWS Fargate: Fargate is the serverless compute option for containers, right? You don't need to manage any of these EC2 instances. AWS handles that while you just focus on your containers.
+
+Benefits of Lambda
+Short executions - Lambda is meant for a quick task, it has a runtime limit of 50 minutes.
+Runs on demand - You only pay per request and compute time, you don't pay for any idle time.
+Integrated with AWS's services, makes everything smoother. And with many programming languages.
+Easy monitoring through AWS's CloudWatch
 
 
 
