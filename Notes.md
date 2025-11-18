@@ -510,6 +510,20 @@ A VPC is like your own private network in the cloud where you can isolate and co
 
 #### Understanding CIDR - IPv4
 Classless Inter-Domain Routing - A method for allocating IP addresses 
+<br> Used in security groups and AWS networking in general
+
+They help define an IP address range
+<br> For example if we see 122.149.196.85/32 - it means just one ip
+<br> 0.0.0.0/0 - Means all IPs.
+<br> CIDR's have more flexibility - 192.168.0.0/26 => 192.168.0.0 - 192.168.0.63(64 IP addresses)
+
+A CIDR consists of two components
+<br> Base IP: Represents an ip contained in the range and usually the start of the range (XX.XX.XX.XX) e.g.  10.0.0.0, 192.168.0.0
+<br> Subnet Mask: Defines how many bits can change in the IP range
+e.g. /0(means all bits can change),/24,/32(allows only one specific ip), the number following the slash determines how flexible that range is 
+
+
+
 
 
 
