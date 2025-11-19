@@ -520,10 +520,34 @@ They help define an IP address range
 A CIDR consists of two components
 <br> Base IP: Represents an ip contained in the range and usually the start of the range (XX.XX.XX.XX) e.g.  10.0.0.0, 192.168.0.0
 <br> Subnet Mask: Defines how many bits can change in the IP range
-e.g. /0(means all bits can change),/24,/32(allows only one specific ip), the number following the slash determines how flexible that range is 
+e.g. /0(means all bits can change),/24,/32(allows only one specific ip), the number following the slash determines how flexible that range is.
 
+Subnet mask
+<br> The subnet mask alows parts of the underlying ip to get additional next values from the base ip.
+For example
+192.168.0.0/32 - allows for 1 IP (2⁰) -> 192.168.0.0
+192.168.0.0/31 - allows for 2 IP's (2¹) = 192.168.0.0 -> 192.168.0.1
+192.168.0.0/30 - allows for 4 IP's (2²) = 192.168.0.0 -> 192.168.03
+etc goes to /24 which allows for 256 IP's(2⁸) 192.168.0.0 -> 192.168.0.255
 
+and 192.168.0.0/16 = allows for 65,536 IP's (2¹⁶) = 192.168.0.0 -> 192.168.255.255
 
+Octets
+/0 - All octets can change
+/8 - Last 3 octets can change
+/16 - Last 2 octets can change
+/24 - Last octet can change
+/32 -  No octet can change
+
+Public vs Private IP(IPv4)
+The Internet Assigned Numbers Authority(IANA) established certain blocks of IPv4 addresses for the use of private(LAN) and public (Internet) addresses.
+
+Private IP can only allow certain values:
+10.0.0.0 - 10.255.255.255(10.0.0.0/8) - Used for big networks
+172.16.0.0 - 172.31.255.255(172.16.0.0/12) - AWS default VPC in that range.
+192.168.0.0 - 192.168.255.255(192.168.0.0/16) -e.g. commonly used for home networks.
+
+All the rest of the IP addresses that are not in these  three ranges are Public IPs with the exception of 127.0.0.1
 
 
 
