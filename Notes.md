@@ -549,8 +549,9 @@ Private IP can only allow certain values:
 
 All the rest of the IP addresses that are not in these  three ranges are Public IPs with the exception of 127.0.0.1
 
-
-
+A default VPC is automatically created with your aws account
+<br> Each EC2 instance in the default VPC will automatically receive a public IPv4 address -  If you have a public IPv4, you can access the internet.
+<br> EC2 instances in the default VPC are assigned both a public and a private IPv4 DNS name, making it easier to access them.
 
 
 
