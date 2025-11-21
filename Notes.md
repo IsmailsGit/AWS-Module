@@ -506,7 +506,7 @@ Benefits of Lambda
 # AWS Networking
 ## Amazon VPC(Virtual Private Cloud)
 
-A VPC is like your own private network in the cloud where you can isolate and control your resources and control who has access to it, also where and how traffic flows.
+A VPC is like your own private network in the cloud where you can isolate and control your resources and control who has access to it, also where and how traffic flows. You can have multiple VPCs in each AWS region.
 
 #### Understanding CIDR - IPv4
 Classless Inter-Domain Routing - A method for allocating IP addresses 
@@ -554,11 +554,71 @@ A default VPC is automatically created with your aws account
 <br> EC2 instances in the default VPC are assigned both a public and a private IPv4 DNS name, making it easier to access them.
 
 
+The smallest range you can allocate is slash 28, which gives you 16 IP addresses. <br> And the largest range is slash 16, which gives you 65,536 IP addresses. So, you've got flexibility depending on how many IPs you need.
 
+Note - Your VPC CIDR should not overlap with other networks you're working with, like corporate network, another VPC, and so on. Otherwise, you run into a lot of routing headaches.
 
+#### Subnet(IPv4)
+Subnets are just small networks within your VPC. Each VPC is divided into multiple subnets, this allows you to segment your resources across different AZ's. 
+This gives you better redundancy and high availability.
 
+Subnets can be public or private, depending on whether they have access to the internet.
 
+AWS reserves 5 IP addresses(first 4 and last 1) in each subnet.
+<br> These 5 ip addresses are not available for use and can't be assigned to an ec2 instance.
 
+Example  CIDR block 10.0.0.0/24 the reserved ip addresses are:
+<br> 10.0.0.0 - Network Address
+<br> 10.0.0.1 - Reserved by AWS for the VPC router 
+<br> 10.0.0.2 - Reserved by AWS for mapping to the amazon provided DNS(IP address used for the DNS server in the VPC)
+<br> 10.0.0.3 - Reserved by AWS for future use 
+<br> 10.0.0.255 - Network Broadcast Address, AWS doesn't support broadcast in a vpc so the address is reserved.
+
+When picking a subnet you have to keep in mind how mamy ip addresses you need and subtract it from these 5 will be used.
+<br> Example You need 29 IP addresses for ec2 instances
+<br> You can't choose subnet size of /27(32 IP addresses 32 - 5 = 27 < 29)
+<br> You can choose a subnet size of /26(64 IP addresses 64 - 5 = 59 > 29)
+
+#### Internet Gateway(IGW)
+Internet gateway allows resources(e.g. EC2 instances) in a VPC to connect to the internet. Basically the gateway through which you instances can send and receive data from the outside world.
+
+It scales horizontally(can handle an increasing amount of traffic), it's highly available and redundant.
+
+When a VPC is created the IGW is not created by default, it must be created separately from a VPC and attached to your VPC.
+
+Only one vpc can be attached to one internet gateway and vice versa.
+
+Internet gateways on their own don't allow internet access, route tables must also be updated.
+
+#### Bastion Hosts
+Imagine you have a private instance, sitting in a private subnet in your VPC.
+<br> These instances don't have direct access to the internet because we want them secure. Think sensitive databases, backend systems etc. 
+<br> But then how do you connect them for management or maintenance? You want to update something and so on. 
+<br> This is where bastion hosts come in
+
+A bastion host is like your bridge to the private instances. It's an instance that sits in a public subnet, meaning it can be accessed from the internet. 
+<br> From there, you can SSH into a bastion and then SSH into your private instances
+
+How it works - The bastion is created in the public subnet. And once you connect to it, you can then access the private subnet where EC2 instances are located.
+
+Important note - The security group of the bastion host needs to be configured to allow inbound SSH from a certain restricted cidr, which could be the public IP range of your office, corporation, and so on. The security group of your private EC2 instances needs to allow inbound SSH from the bastion host, either by its private IP or a security group
+
+Summary - This setup allows you to securely manage your private EC2 instances without directly exposing them to the internet. It adds an extra layer of protection in environments where security is critical.
+
+#### Nat Gateway
+A NAT (network address translation) gateway is a managed service provided by aws that allows your instances in a private subnet to connect to the internet, but blocks any incoming traffic from the internet.
+
+AWS manages the NAT so the higher bandwidth and high availability
+
+Pay per hour for usage and bandwidth.
+
+Nat gateways are created and tied to a specific az, they also use an elastic ip
+
+Can't be used by ec2 instamces in the same subnet as the Nat, only from other subnets within the same vpc.
+
+NAT gateway equires an Internet gateway(Private subnet -> NATGW -> IGW) to connect to the outside world.
+
+No security groups to manage/required.
 
 
 
