@@ -620,6 +620,20 @@ NAT gateway equires an Internet gateway(Private subnet -> NATGW -> IGW) to conne
 
 No security groups to manage/required.
 
+NAT Gateway vs NAT Instance
+![Screenshot](https://github.com/user-attachments/assets/55edeb1f-8330-415b-8877-a3043976e1ea)
+
+#### NACL(Networking Access Control List)
+A NACL is like a firewall that controls traffic from and to subnets, based on a set of rules you define.
+<br> Every new subnet you create gets a default NACL and each subnet can only have one NACL.
+<br> They are stateless, nacl's don't automatically allow return traffic, you have to define both inbound and outbound rules explicitly.
+
+You define NACL Rules:
+<br> Rules have a number(1-32766), higher precedence with a lower number.
+<br> First rule match will drive the decision
+
+
+
 
 
 
