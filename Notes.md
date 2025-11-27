@@ -631,9 +631,13 @@ A NACL is like a firewall that controls traffic from and to subnets, based on a 
 You define NACL Rules:
 <br> Rules have a number(1-32766), higher precedence with a lower number.
 <br> First rule match will drive the decision
+<br> Last rule is called the catch all, an asterisk(*) and denies a rquest in case of no rule match.
+<br> AWS recommends adding rules by increment of 100, 200 and so on, so you have space to add rules to add rules in between if it's needed later
+
+Why use NACLs? - NACLs are great for blocking certain IP addresses at the subnet level. If you want to stop all traffic from a certain IP, you can create a rule to deny that traffic. This is super useful for creating additional layers for security for your infrastructure.
 
 
-
+NACLs help control traffic at a subnet-wide level, offering another layer of defense before the traffic to your instances. They're super handy for scenarios where you need to block all your traffic to multiple resources within a subnet.
 
 
 
