@@ -623,7 +623,7 @@ No security groups to manage/required.
 NAT Gateway vs NAT Instance
 ![Screenshot](https://github.com/user-attachments/assets/55edeb1f-8330-415b-8877-a3043976e1ea)
 
-#### NACL(Networking Access Control List)
+#### NACL(Network Access Control List)
 A NACL is like a firewall that controls traffic from and to subnets, based on a set of rules you define.
 <br> Every new subnet you create gets a default NACL and each subnet can only have one NACL.
 <br> They are stateless, nacl's don't automatically allow return traffic, you have to define both inbound and outbound rules explicitly.
@@ -639,6 +639,19 @@ Why use NACLs? - NACLs are great for blocking certain IP addresses at the subnet
 
 NACLs help control traffic at a subnet-wide level, offering another layer of defense before the traffic to your instances. They're super handy for scenarios where you need to block all your traffic to multiple resources within a subnet.
 
+#### Security Groups and NACLs
+Security groups are stateful, if inbound traffic is allowed outbound traffic is automatically allowed by default.
+
+Whereas NACLs are stateless, you need to allow traffic in both directions, if inbound traffic is allowed, outbound traffic still needs to be allowed as well.
+
+Using both SG's and NACL's you can control traffic at both the instance level and the subnet level, this gives you a more layered approach to security.
+
+#### VPC Peering
+Vpc peering is a way to privately connect two vpc's using AWS's internal network.
+When it is set up, the two VPC's behave as if they are part of the same network allowing them to communicate with each other without using the internet.
+
+The two vpc's can't have any overlapping IP ranges or CIDR's otherwise AWS won't allow that peering connection.
+<br> 
 
 
 
