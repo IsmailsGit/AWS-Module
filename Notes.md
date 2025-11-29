@@ -648,10 +648,14 @@ Using both SG's and NACL's you can control traffic at both the instance level an
 
 #### VPC Peering
 Vpc peering is a way to privately connect two vpc's using AWS's internal network.
+
 When it is set up, the two VPC's behave as if they are part of the same network allowing them to communicate with each other without using the internet.
 
 The two vpc's can't have any overlapping IP ranges or CIDR's otherwise AWS won't allow that peering connection.
-<br> 
+<br> VPC peering is non transitive, a connection must established for each vpc. For example if you have three vpc's A, B and C and theres a connection between A and B and B and C
+A and C can't communicate with each other unless you make a connection between them.
+
+Must update route tables - After a peering connection is made, you need to update the route tables in each vpc's subnets to ensure traffic can flow between the instances in both vpc's.
 
 
 
