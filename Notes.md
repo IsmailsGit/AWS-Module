@@ -657,6 +657,9 @@ A and C can't communicate with each other unless you make a connection between t
 
 Must update route tables - After a peering connection is made, you need to update the route tables in each vpc's subnets to ensure traffic can flow between the instances in both vpc's.
 
+#### VPC Endpoints
+Every AWS servic is publy exposed by defaut, they have a public URL that your resources need to access via the internet.
+
 
 
 ## DNS(Route53)
