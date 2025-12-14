@@ -658,7 +658,7 @@ A and C can't communicate with each other unless you make a connection between t
 Must update route tables - After a peering connection is made, you need to update the route tables in each vpc's subnets to ensure traffic can flow between the instances in both vpc's.
 
 #### VPC Endpoints
-Every AWS respurces is publicly exposed by default, they have a public URL that your resources need to access via the internet.
+Every AWS resource is publicly exposed by default, they have a public URL that your resources need to access via the internet.
 
 If you want to keep things private for security reasons, you would use vpc endpoints
 
@@ -671,10 +671,22 @@ They're redundant and scale horizontally and they remove the need of igw and nat
 
 If you have any issues check your DNS setting resolution in your vpc and check your route tables.
 
+
 Types of Endpoints
 ![Screenshot](https://github.com/user-attachments/assets/76265f22-ca19-4d79-96ef-dcad653c7148)
 ENI(Elastic Network Interface) - which is basically a private IP address that serves as the entry point for EC2 instances to connect to the supported AWS services.
 Think of it as a way to keep everything on a private network, rather than going out over the internet.
+
+#### IPv6 
+IPv4 is designed to provide 4.3 billion addresses(Will be  exhausted soon) IPv6 is the successor of IPv4
+IPv6 is designed to provide 3.4 x 10³⁸ unique ip addresses
+Every Ipv6 address in AWS is public and internet-routable(no private range like ipv4).
+
+Format is  x.x.x.x.x.x.x.x(x is hexadecimal, range can be from 0000 to ffff) 
+Example 2001:db8:3333:4444:5555:8a2e:6666:7777
+Can be shortened in to colons if one part is all zeros 
+:: - All 8 segments are zero
+2001:db8:: - Last 6 segments are zero
 
 
 ## DNS(Route53)
