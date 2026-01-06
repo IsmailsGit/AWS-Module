@@ -710,6 +710,17 @@ It's not because it can't acquire an IPv6 it is because there are no available I
 Solution:
 <br> Create a new IPv4 CIDR in your subnet, this will give you the additional address space you need to launch more instances. 
 
+#### Egress-only Internet Gateway 
+Used for IPv6 only(similar to a Nat gateway but for IPv6) 
+<br> Allows instances in your VPC outbound connections over IPv6 while preventing the internet to initiate an IPv6 connection to your instances. -  Meaning they let your instances communicate out to the internet over IPv6, while blocking any incoming connections from the outside world.
+<br> This helps secure resources from unwanted incoming traffic.
+
+You must update the route tables to direct the outbound traffic from a private subnet through the Egress Only Internet Gateway. If you forget this step, your instances won't be able to communicate with the outside world.
+
+Summary - The Egress Only Internet Gateway is a useful tool for environments where you want to restrict inbound IPv6 connections while still allowing instances to make outbound requests.
+
+
+
 
 ## DNS(Route53)
 
