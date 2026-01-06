@@ -677,7 +677,7 @@ Types of Endpoints
 ENI(Elastic Network Interface) - which is basically a private IP address that serves as the entry point for EC2 instances to connect to the supported AWS services.
 Think of it as a way to keep everything on a private network, rather than going out over the internet.
 
-#### IPv6 
+### IPv6 
 IPv4 is designed to provide 4.3 billion addresses(Will be  exhausted soon) IPv6 is the successor of IPv4
 IPv6 is designed to provide 3.4 x 10³⁸ unique ip addresses
 Every Ipv6 address in AWS is public and internet-routable(no private range like ipv4).
@@ -688,6 +688,17 @@ Can be shortened in to colons if one part is all zeros
 :: - All 8 segments are zero
 2001:db8:: - Last 6 segments are zero
 
+#### IPv6 in VPC
+
+IPv4 cannot be disabled for your vpc and subnets even if you enable IPv6.
+
+You can enable IPv6(they're public ip addresses) to operate in dual stack mode, it will operate alongside IPv4 - meaning your resources can use both IPv4 and IPv6 at the same time.
+
+Your EC2 instances will have both an internal private IPv4 for internal communication within the vpc  and a public IPV6 which is internet routable.
+
+The instance can communicate with internet using wither IPv4 or IPv6, this is possible through using the internet gateway which supports both ip protocols 
+
+In this setup, your instances are given the flexibility to use both IP versions, right. This is particularly handy in environments transitioning to IPv6, but still needing the IPv4 compatibility. It allows smoother migration to new technologies without breaking your existing setup.
 
 ## DNS(Route53)
 
