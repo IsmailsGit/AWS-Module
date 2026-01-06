@@ -759,11 +759,40 @@ The One Thing to Remember
 <br> IPv4 privacy comes from NAT.
 <br> IPv6 privacy comes from firewall rules.
 
+#### IPv6 Routing Architecture
 
+![Screenshot](https://github.com/user-attachments/assets/5f168d3c-9aad-438c-9a42-ab37ed615117)
+
+In Summary, this setup illustrates how IPv4 and IPv6 traffic is handled separately within a dual-stack VPC. NAT gateway handles outbound IPv4 traffic, while egress-only internet gateway handles IPv6 traffic for private instances. Public instances can route traffic directly to the internet using both IPv4 and IPv6 via internet gateway.
+
+### VPC Section Summary
 
 
 
 ## DNS(Route53)
+### Amazon Route 53
+What is Route 53? - Route 53 is basically AWS's managed DNS service and it is highly available, scalable, fully managed and Authoritative DNS.
+<br> Authoritative = Means you have full control over your DNS entries. You can update, add, or delete DNS records to point to your resources, like EC2 instances, load balancers, and more.
+
+It also lets you buy and manage domain names, it's like a domain registrar, similar to services like GoDaddy and Cloudflare.
+
+Has built in health check capabilities, meaning it can monitor the health of your resources and respond appropriately. For example, if your primary server goes down, it can automatically route traffic to a backup
+
+100% Availability - Route 53 is the only AWS service that offers a 100% SLA for availability. That means it's designed to never go down, which is crucial for DNS since it's the backbone of internet traffic routing.
+
+#### Route 53 - Hosted Zones
+A host zone is kind of like a container for records that define how to route traffic to a domain and its subdomains, it tells Route 53 how to route the traffic.
+
+Public Hosted Zones - Contains records that specify how to route traffic on the internet(public domain names). For example if you have a domain like application1.mypublicdomain.com, you'd create a public hosted zone to define how traffic for that domain and its subdomains are handled.
+
+Private Hosted Zones - Contains records that specify how you route traffic within one or more VPCs(private domain names) For example, you might have a domain like application1.company.internal that only routes traffic within a private network, making sure everything stays behind closed doors.
+
+Cost is $0.50 per month per hosted zone.
+
+In a nutshell, hosted zones are the backbone of how Route 53 manages whether it's out to a public web or staying within your internal VPCs.
+
+
+
 
 ## CDN(CloudFront)
 
