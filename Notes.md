@@ -700,6 +700,17 @@ The instance can communicate with internet using wither IPv4 or IPv6, this is po
 
 In this setup, your instances are given the flexibility to use both IP versions, right. This is particularly handy in environments transitioning to IPv6, but still needing the IPv4 compatibility. It allows smoother migration to new technologies without breaking your existing setup.
 
+#### IPv6 Troubleshooting
+Remember IPv6 cannot be disabled for your VPC or subnets by default.
+Problem:
+<br> So if you can't launch an EC2 instance in your subnet
+
+It's not because it can't acquire an IPv6 it is because there are no available IPv4 in your subnet. This happens because IPv4 space is limited.
+
+Solution:
+<br> Create a new IPv4 CIDR in your subnet, this will give you the additional address space you need to launch more instances. 
+
+
 ## DNS(Route53)
 
 ## CDN(CloudFront)
