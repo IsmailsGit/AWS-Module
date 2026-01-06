@@ -616,7 +616,7 @@ Nat gateways are created and tied to a specific az, they also use an elastic ip
 
 Can't be used by ec2 instamces in the same subnet as the Nat, only from other subnets within the same vpc.
 
-NAT gateway equires an Internet gateway(Private subnet -> NATGW -> IGW) to connect to the outside world.
+NAT gateway r equires an Internet gateway(Private subnet -> NATGW -> IGW) to connect to the outside world.
 
 No security groups to manage/required.
 
@@ -718,6 +718,47 @@ Used for IPv6 only(similar to a Nat gateway but for IPv6)
 You must update the route tables to direct the outbound traffic from a private subnet through the Egress Only Internet Gateway. If you forget this step, your instances won't be able to communicate with the outside world.
 
 Summary - The Egress Only Internet Gateway is a useful tool for environments where you want to restrict inbound IPv6 connections while still allowing instances to make outbound requests.
+
+#### IPv6 Routing
+
+![Screenshot](https://github.com/user-attachments/assets/70a5eb83-38d9-432e-9c17-124e76d5ec66)
+
+A dual-stack VPC supports both IPv4 and IPv6.
+Each subnet and instance can have both types of addresses.
+
+The Core Difference
+<br> IPv4
+<br> Private IPv4 addresses cannot reach the internet directly
+<br> A NAT Gateway is needed for outbound access from private subnets
+
+IPv6
+<br> IPv6 addresses are already internet-routable
+<br> No NAT exists or is needed
+<br> Traffic goes directly to the Internet Gateway
+
+Public vs Private Subnets (What Actually Changes)
+<br> The difference is routing, not the IP type.
+
+Public subnet
+<br> Default routes point to the Internet Gateway
+<br> IPv4 and IPv6 both go straight out
+
+Private subnet
+<br> IPv4 goes to a NAT Gateway
+<br> IPv6 still goes directly to the Internet Gateway
+
+Why “Private” Still Makes Sense with IPv6
+<br> Even though IPv6 traffic goes straight to the IGW:
+<br> Instances are not exposed
+<br> Inbound access is blocked by Security Groups and NACLs
+So:
+<br> Outbound IPv6 → allowed
+<br> Inbound IPv6 → denied (unless explicitly allowed)
+
+The One Thing to Remember
+<br> IPv4 privacy comes from NAT.
+<br> IPv6 privacy comes from firewall rules.
+
 
 
 
