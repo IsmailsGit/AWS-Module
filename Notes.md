@@ -791,6 +791,25 @@ Cost is $0.50 per month per hosted zone.
 
 In a nutshell, hosted zones are the backbone of how Route 53 manages whether it's out to a public web or staying within your internal VPCs.
 
+#### What is DNS?
+DNS(Domain Name System) is a system that translates the human friendly hostnames into the machine IP addresses. For example www.google.com -> 172.217.18.36
+<br> This translation is what allows your device to know where to connect and fetch the content you need.
+<br> DNS is the backbone of the internet
+<br> DNS uses hierachical naming structure.
+
+#### DNS Terminologies
+Domain Registrar - Think of it like the place where you go to buy your domain name. Services like Amazon R53, Cloudflare, GoDaddy, and others. These let you register domain names from scratch
+
+DNS Records - These are essentially the instructions for your domain. Records like A, AAAA, CNAME, and NAMESERVERS. These tell the internet where to send traffic. It's like directing letters to the right address. But instead of a street, it's an IP address.
+
+Zone File - This is very crucial because it contains all the DNS records for a certain domain. It's basically a directory that keeps track of everything.
+
+Name Server - This is where your domain is hosted. It resolves DNS queries, deciding whether the answer is coming from an authoritative source or not. It's basically the decision maker for DNS requests.
+
+TLD(Top Level Domain) - These are things like .com, .org, .gov, and so on. They sit at the very top of the DNS hierarchy.
+
+SLD(Second Level Domain) - This is the part of the domain that you actually register. Like Amazon, .amazon.com, google.google.com, codercode.io even, and so on.
+
 
 
 
