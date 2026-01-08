@@ -810,6 +810,19 @@ TLD(Top Level Domain) - These are things like .com, .org, .gov, and so on. They 
 
 SLD(Second Level Domain) - This is the part of the domain that you actually register. Like Amazon, .amazon.com, google.google.com, codercode.io even, and so on.
 
+#### Route 53 - Routes
+Records specify how you want to route traffic for a domain.
+
+Each record contains:
+<br> • Domain/subdomain name - e.g., example.com
+<br> • Record type -e.g., A or AAAA, an A record maps to a domain of an IPv4. A quadruple A record maps to an IPv6 address
+<br> • Value - e.g., 12.34.56.78
+<br> • Routing Policy - how Route 53 responds to queries
+<br> • TTL - amount of time the record cached at DNS Resolvers
+
+
+
+
 
 
 
