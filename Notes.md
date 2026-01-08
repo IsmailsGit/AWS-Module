@@ -820,8 +820,7 @@ Each record contains:
 <br> • Routing Policy - how Route 53 responds to queries
 <br> • TTL - amount of time the record cached at DNS Resolvers
 
-
-
+#### Route 53 -
 
 
 
