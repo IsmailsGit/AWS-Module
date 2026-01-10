@@ -820,7 +820,26 @@ Each record contains:
 <br> • Routing Policy - how Route 53 responds to queries
 <br> • TTL - amount of time the record cached at DNS Resolvers
 
-#### Route 53 -
+#### Route 53 - Record Types
+A - maps a hostname to IPv4
+<br> AAAA - maps a hostname to IPv6
+<br> CNAME - maps a hostname to another hostname
+<br> • The target is a domain name which must have an A or AAAA record
+<br> • Can't create a CNAME record for the top node of a DNS namespace (Zone Apex)
+<br> • Example: you can't create for example.com, but you can create for sub domains like www.example.com
+<br> NS - Name Servers for the Hosted Zone
+<br> • Control how traffic is routed for a domain
+
+#### Route 53 - Records TTL (Time To Live) 
+High TTL - e.g., 24 hr
+<br> • Less traffic on Route 53
+<br> • Possibly outdated records
+
+Low TTL - e.g., 60 sec.
+<br> • More traffic on Route 53 ($$)
+<br> • Records are outdated for less time
+<br> • Easy to change records
+<br> • Except for Alias records, TTL is mandatory for each DNS record.
 
 
 
