@@ -825,7 +825,7 @@ A - maps a hostname to IPv4
 <br> AAAA - maps a hostname to IPv6
 <br> CNAME - maps a hostname to another hostname
 <br> • The target is a domain name which must have an A or AAAA record
-<br> • Can't create a CNAME record for the top node of a DNS namespace (Zone Apex)
+<br> • Can't create a CNAME record for the top node of a DNS namespace (Zone Apex). Can oly use CNAME for non root domains.
 <br> • Example: you can't create for example.com, but you can create for sub domains like www.example.com
 <br> NS - Name Servers for the Hosted Zone
 <br> • Control how traffic is routed for a domain
@@ -840,6 +840,31 @@ Low TTL - e.g., 60 sec.
 <br> • Records are outdated for less time
 <br> • Easy to change records
 <br> • Except for Alias records, TTL is mandatory for each DNS record.
+
+
+#### CNAME vs ALIAS
+AWS Resources (Load Balancer, CloudFront...) expose an AWS hostname:
+<br> • 1b1-1234.us-east-2.elb.amazonaws.com and you want myapp.mydomain.com
+
+CNAME:
+<br> • Points a hostname to any other hostname. (app.mydomain.com => blabla.anything.com)
+<br> • ONLY FOR NON ROOT DOMAIN (aka. something.mydomain.com)
+
+Alias:
+<br> • Maps a hostname to an AWS Resource (app.mydomain.com => blabla.amazonaws.com)
+<br> • Works for ROOT DOMAIN and NON ROOT DOMAIN (aka mydomain.com)
+<br> • Free of charge
+<br> • Native health check
+<br> • Automatically recognizes changes in the
+resource's IP addresses
+<br> • Alias Record is always of type A/AAAA for AWS
+resources (IPv4 / IPv6).
+<br> • You can't set the TTL
+
+
+
+
+
 
 
 
