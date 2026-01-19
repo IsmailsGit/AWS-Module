@@ -861,14 +861,32 @@ resource's IP addresses
 resources (IPv4 / IPv6).
 <br> • You can't set the TTL
 
-#### Route 53 - Routing Policies
+### Route 53 - Routing Policies
 Don't get confused by the term routing here. It's not like load balancing, which actually directs traffic. In DNS terms, Route 53 doesn't route traffic itself. It just helps your DNS server respond to queries with the correct answer. 
 
 For example think of it as the guy standing at the front of a restaurant showing you to your table.
 
 There are several different routing polices that route 53 supports.
-<br> •Simple - This is the most straightforward one. It just gives back the same IP address every time someone queries a domain.
-<br> • Weighted - Imagine you have 2 servers, and you want 70% of traffic to go to server A and 30% to server B. With weighted routing, you can do exactly that.
+
+Simple - This is the most straightforward one. It just gives back the same IP address every time someone queries a domain.
+• Typically, route traffic to a single resource
+• Can specify multiple values in the same record
+• If multiple values are returned, a random one is chosen by
+the client
+• When Alias enabled, specify only one AWS resource
+• Can't be associated with Health checks
+
+Weighted - Imagine you have 2 servers, and you want 70% of traffic to go to server A and 30% to server B. With weighted routing, you can do exactly that.
+<br> • Control the % of the requests that go to each specific resource
+<br> • Assign each record a relative weight:
+<br> • Traffic (%) = Weight for a specific Record➗Sum of all the weights for all records
+<br> • Weights don't need to sum up to 100
+<br> • DNS records must have the same name and type
+<br> • Can be associated with Health Checks
+<br> • Use cases: load balancing between regions, testing new versions of an application with just a small fraction of users before going all-in.
+<br> • Assign a weight of 0 to a record to stop sending traffic to a resource
+<br> • If you want to stop traffic to a resource entirely, just give it a weight of 0. 
+
 <br> • Failover - If your main server goes down, Route 53 can detect that and route traffic to a backup server instead. This ensures that your users don't get left hanging if something goes wrong.
 <br> • Latency based - Route 53 will route users to the server that responds the fastest. Now this is awesome when you've got servers spread across different regions.
 <br> • Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
