@@ -861,6 +861,19 @@ resource's IP addresses
 resources (IPv4 / IPv6).
 <br> • You can't set the TTL
 
+#### Route 53 - Routing Policies
+Don't get confused by the term routing here. It's not like load balancing, which actually directs traffic. In DNS terms, Route 53 doesn't route traffic itself. It just helps your DNS server respond to queries with the correct answer. 
+
+For example think of it as the guy standing at the front of a restaurant showing you to your table.
+
+There are several different routing polices that route 53 supports.
+<br> •Simple - This is the most straightforward one. It just gives back the same IP address every time someone queries a domain.
+<br> • Weighted - Imagine you have 2 servers, and you want 70% of traffic to go to server A and 30% to server B. With weighted routing, you can do exactly that.
+<br> • Failover - If your main server goes down, Route 53 can detect that and route traffic to a backup server instead. This ensures that your users don't get left hanging if something goes wrong.
+<br> • Latency based - Route 53 will route users to the server that responds the fastest. Now this is awesome when you've got servers spread across different regions.
+<br> • Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
+<br> • Multi-Value Answer - This is quite special. You can provide multiple IP addresses in response to the address name. Now this is great for spreading out the load without needing a full-on load balancer.
+<br> • Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation but more customizable. It allows you to route traffic based on the geographic location of your resources and users. And you can tweak it using Route 53 traffic flow.
 
 
 
