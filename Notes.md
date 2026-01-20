@@ -897,10 +897,10 @@ Latency based - Route 53 will route users to the server that responds the fastes
 <br> • Can be associated with Health Checks (has a failover capability)
 
  Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
-• This routing is based on user location, you specify location by Continent, Country or by US State (if there's overlapping, most precise location selected)
-• Should create a "Default" record (in case there's no match on location)
-• Use cases: website localization, restrict content distribution, load balancing
-• Can be associated with Health Checks
+<br> • This routing is based on user location, you specify location by Continent, Country or by US State (if there's overlapping, most precise location selected)
+<br> • Should create a "Default" record (in case there's no match on location)
+<br> • Use cases: website localization, restrict content distribution, load balancing
+<br> • Can be associated with Health Checks
  
 <br> • Multi-Value Answer - This is quite special. You can provide multiple IP addresses in response to the address name. Now this is great for spreading out the load without needing a full-on load balancer.
 <br> • Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation but more customizable. It allows you to route traffic based on the geographic location of your resources and users. And you can tweak it using Route 53 traffic flow.
