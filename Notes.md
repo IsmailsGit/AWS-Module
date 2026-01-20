@@ -887,11 +887,34 @@ Weighted - Imagine you have 2 servers, and you want 70% of traffic to go to serv
 <br> • Assign a weight of 0 to a record to stop sending traffic to a resource
 <br> • If you want to stop traffic to a resource entirely, just give it a weight of 0. 
 
-<br> • Failover - If your main server goes down, Route 53 can detect that and route traffic to a backup server instead. This ensures that your users don't get left hanging if something goes wrong.
-<br> • Latency based - Route 53 will route users to the server that responds the fastest. Now this is awesome when you've got servers spread across different regions.
-<br> • Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
+<br> Failover - If your main server goes down, Route 53 can detect that and route traffic to a backup server instead. This ensures that your users don't get left hanging if something goes wrong.
+
+Latency based - Route 53 will route users to the server that responds the fastest. Now this is awesome when you've got servers spread across different regions.
+<br> • Redirect to the resource that has the least latency close to us
+<br> • Super helpful when latency for users is a priority
+<br> • Latency is based on traffic between users and AWS Regions
+<br> • Germany users may be directed to the US (if that's the lowest latency)
+<br> • Can be associated with Health Checks (has a failover capability)
+
+ Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
+• This routing is based on user location, you specify location by Continent, Country or by US State (if there's overlapping, most precise location selected)
+• Should create a "Default" record (in case there's no match on location)
+• Use cases: website localization, restrict content distribution, load balancing
+• Can be associated with Health Checks
+ 
 <br> • Multi-Value Answer - This is quite special. You can provide multiple IP addresses in response to the address name. Now this is great for spreading out the load without needing a full-on load balancer.
 <br> • Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation but more customizable. It allows you to route traffic based on the geographic location of your resources and users. And you can tweak it using Route 53 traffic flow.
+
+Route 53 Health Checks
+HTTP Health Checks are only for public resources
+• Health Check => Automated DNS Failover:
+1. Health checks that monitor an endpoint
+(application, server, other AWS resource)
+2. Health checks that monitor other health
+checks (Calculated Health Checks)
+3. Health checks that monitor CloudWatch
+Alarms, uses metrics from cloudwatch to make decisions  (full control !!) - e.g., throttles of DynamoDB, alarms on RDS, custom metrics(helpful for private resources)
+• Health Checks are integrated with CW metrics
 
 
 
