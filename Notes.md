@@ -903,7 +903,21 @@ Latency based - Route 53 will route users to the server that responds the fastes
 <br> • Can be associated with Health Checks
  
 <br> • Multi-Value Answer - This is quite special. You can provide multiple IP addresses in response to the address name. Now this is great for spreading out the load without needing a full-on load balancer.
-<br> • Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation but more customizable. It allows you to route traffic based on the geographic location of your resources and users. And you can tweak it using Route 53 traffic flow.
+
+Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation but more customizable.
+<br> • It allows you to route traffic to your resources based on the geographic location of users and resources
+<br> • Ability to shift more traffic to resources based on the defined bias
+<br> • To change the size of the geographic region, specify bias values:
+<br> • To expand (1 to 99) - more traffic to the resource
+<br> • To shrink (-1 to -99) - less traffic to the resource
+<br> • Resources can be:
+<br> •AWS resources (specify AWS region)
+<br> • Non-AWS resources (specify Latitude and Longitude) 
+<br> • You must use Route 53 Traffic Flow to use this feature
+
+
+
+
 
 Route 53 Health Checks
 HTTP Health Checks are only for public resources
