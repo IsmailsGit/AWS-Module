@@ -896,13 +896,18 @@ Latency based - Route 53 will route users to the server that responds the fastes
 <br> • Germany users may be directed to the US (if that's the lowest latency)
 <br> • Can be associated with Health Checks (has a failover capability)
 
- Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
+Geolocation - You can route traffic based on where the user is located. If you have a user in Europe, right, let's say, and in the US, you can serve them different content depending on their location.
 <br> • This routing is based on user location, you specify location by Continent, Country or by US State (if there's overlapping, most precise location selected)
 <br> • Should create a "Default" record (in case there's no match on location)
 <br> • Use cases: website localization, restrict content distribution, load balancing
 <br> • Can be associated with Health Checks
  
-<br> • Multi-Value Answer - This is quite special. You can provide multiple IP addresses in response to the address name. Now this is great for spreading out the load without needing a full-on load balancer.
+Multi-Value - This is quite special. You can provide multiple IP addresses in response to the address name. Now this is great for spreading out the load without needing a full-on load balancer.
+<br> • Use when routing traffic to multiple resources
+<br> • Route 53 return multiple values/resources
+<br> • Can be associated with Health Checks (return only values for healthy resources)
+<br> • Up to 8 healthy records are returned for each Multi-Value query
+<br> • Multi-Value is not a substitute for having an ELB
 
 Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation but more customizable.
 <br> • It allows you to route traffic to your resources based on the geographic location of users and resources
@@ -914,6 +919,14 @@ Geoproximity (using Route 53 Traffic Flow feature) - This is like geolocation bu
 <br> •AWS resources (specify AWS region)
 <br> • Non-AWS resources (specify Latitude and Longitude) 
 <br> • You must use Route 53 Traffic Flow to use this feature
+
+IP based Routing
+<br> • Routing is based on clients' IP addresses
+<br> • You provide a list of CIDRs for your clients and the
+corresponding endpoints/locations (user-IP-to-endpoint
+mappings)
+<br> • Use cases: Optimize performance, reduce network costs...
+<br> • Example: route end users from a particular ISP to a specific endpoint
 
 
 
