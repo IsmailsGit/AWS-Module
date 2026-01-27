@@ -940,7 +940,7 @@ Alarms, uses metrics from cloudwatch to make decisions  (full control !!) - e.g.
 <br> • Health Checks are integrated with CW metrics
 
 ### 3rd Party Register with Amazon Route 53
-<br> • If you buy your domain on a 3rd party registrar e.g. GoDaddy and Cloudflare, you can still use Route 53 as the DNS Service provider
+• If you buy your domain on a 3rd party registrar e.g. GoDaddy and Cloudflare, you can still use Route 53 as the DNS Service provider
 <br> 1. Create a Public Hosted Zone in Route 53, this is where you set up DNS records for your domain
 <br> 2. Update NS Records on 3rd party website and you point it to Route 53 name servers. Route 53 will give you these when you create the hosted zone and you add them into your registrar.
 
@@ -956,7 +956,7 @@ This is AWS's own Content Delivery Network(CDN)
 DDoS protection - It also provides security, it integrates with AWS Shield and AWS WAF(Web Application Firewall) to help protect resources from ddos attacks and other potential threats.
 
 ### CloudFront - Origins
-<br> Origins are cloudfront gets the content it delivers to users
+Origins are cloudfront gets the content it delivers to users
 
 S3 bucket
 <br> • Perfect for distributing files like images, videos or any static content(fixed files—such as HTML, CSS, JavaScript) and caching them at the edge.
@@ -970,6 +970,40 @@ Custom Origin(HTTP)
 <br> • EC2 instances you're running an application in.
 <br> • S3 website(you need to first enable static S3 website hosting on the bucket)
 <br> • And any HTTP backend you want
+
+### CloudFront at a high level
+![Screenshot](https://github.com/user-attachments/assets/1bf39f51-84bd-41d4-b2e0-d889d4d7ef65)
+
+A client, think of it as your browser, makes a request to view an image from a website like quote-unquote JPEG. The request is sent to a CloudFront Edge location, which is one of the many servers distributed globally.
+
+Now, CloudFront is smart. If the image or the content you're asking for is already cached at this location, it serves it right away, the local cache, super fast. But what if it's not cached? CloudFront then reaches out to the origin, which could be an S3 bucket or another HTTP-based web server. The origin sends the content back to CloudFront, and then CloudFront caches it at the Edge location for future requests, right.
+
+Then the client gets the content from CloudFront. And voila, this whole setup speeds up content delivery because instead of always going back to the origin, right, which could be far away or even costly every single time, CloudFront caches it at the closest possible Edge location.
+
+
+### CloudFront - S3 as an Origin
+![Screenshot](https://github.com/user-attachments/assets/2ee2ca57-9719-4a8c-9296-4c9161284c1f)
+
+We have an S3 bucket acting as the origin, which stores your files, like images or videos. Now these are then scattered across the globe. Remember we've got CloudFront edge locations or POPs in places like Los Angeles, Mumbai, Sao Paulo, and Melbourne.
+
+So when a user like you or me requests a file, CloudFront will first check the CloudFront's edge location to see if it already has the file cached. If it does, great, it delivers it fast from the edge location. But if it doesn't, it will go all the way back to the S3 bucket, the origin, to fetch the file and then cache it at the edge location for future requests.
+
+Here's the cool part. When you're using a private database with origin access control and bucket policies as you can see here right, only CloudFront can access your S3 files directly, adding an extra layer of security. So essentially CloudFront plus S3 is all about serving content quickly, securely, and from the nearest possible location to the user.
+
+### CloudFront - ALB or EC2 as an origin
+![Screenshot](https://github.com/user-attachments/assets/dfe21105-909e-499e-953c-745629ec0a43)
+
+The ALB or EC2 has an origin. Imagine you have a public-facing load balancer or EC2 instance, here's how it works. You've got users connecting to an edge location, again, closest to them, thanks to CloudFront. But this time it's on an S3 bucket, the request goes to ALB or EC2 instance.
+
+For this to happen, your ALB first needs to be public, meaning it has to have traffic from the public IPs of the edge locations. Only that should be the SG, right, the security group should allow. And you see if you go to this link here, you can see the list of CloudFront IPs that is public and make sure that it's accepted, right, as an inbound rule.
+
+So in CloudFront, it's the ALB and the ALB routes traffic to the backend services. Now if you're using EC2 instances directly, same idea, but in this case, if the instances are public, they need to allow traffic from the public IPs of the edge locations.
+
+Top diagram shows private EC2 instances behind an ALB. The ALB handles the public requests, while the private EC2 instances can sit comfortably behind, shielding from direct exposure. At the bottom, we see public EC2 instances directly handling requests from CloudFront, and again, they must allow these edge location IPs.
+
+Now security is key here. You must configure your security group properly to allow only CloudFront's public IP ranges to communicate with the load balancer for EC2 instances. 
+
+So in a nutshell, ALB or EC2 as an origin is all about using CloudFront to bring speed and scalability to your application, while making sure your architecture is secure.
 
 
 
