@@ -949,10 +949,27 @@ Alarms, uses metrics from cloudwatch to make decisions  (full control !!) - e.g.
 
 
 ## CDN(CloudFront)
+This is AWS's own Content Delivery Network(CDN)
+<br> CloudFront is designed to boost performance by caching your content closer to users at edge locations.
+<br> Instead of users reaching all the way back to your origin server, like an S3 bucket or EC2 load balancer, the content is cached right at the edge closer to them.
+<br> This results in faster load times, a better user experience and fewer resources being used up on your origin server.
+DDoS protection - It also provides security, it integrates with AWS Shield and AWS WAF(Web Application Firewall) to help protect resources from ddos attacks and other potential threats.
 
-     
+### CloudFront - Origins
+<br> Origins are cloudfront gets the content it delivers to users
 
+S3 bucket
+<br> • Perfect for distributing files like images, videos or any static content(fixed files—such as HTML, CSS, JavaScript) and caching them at the edge.
+<br> • Enhanced security with CloudFront Origin Access Control(OAC) - OAC ensures only CloudFront can access your S3 bucket content, no direct S3 access from the web
+<br> • OAC is replacing Origin Access Identity(OAI)
+<br> • CloudFront can be used as an ingress(to upload files to S3
 
+Custom Origin(HTTP)
+<br> If you're working with http based backends you can set cloudfront to distribute content from:
+<br> • ALB's(Application Load Balancer)
+<br> • EC2 instances you're running an application in.
+<br> • S3 website(you need to first enable static S3 website hosting on the bucket)
+<br> • And any HTTP backend you want
 
 
 
