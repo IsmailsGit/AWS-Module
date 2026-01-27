@@ -928,26 +928,24 @@ mappings)
 <br> • Use cases: Optimize performance, reduce network costs...
 <br> • Example: route end users from a particular ISP to a specific endpoint
 
-
-
-
-
 Route 53 Health Checks
-HTTP Health Checks are only for public resources
-• Health Check => Automated DNS Failover:
-1. Health checks that monitor an endpoint
+<br> • HTTP Health Checks are only for public resources
+<br> • Health Check => Automated DNS Failover:
+<br> 1. Health checks that monitor an endpoint
 (application, server, other AWS resource)
-2. Health checks that monitor other health
+<br> 2. Health checks that monitor other health
 checks (Calculated Health Checks)
-3. Health checks that monitor CloudWatch
+<br> 3. Health checks that monitor CloudWatch
 Alarms, uses metrics from cloudwatch to make decisions  (full control !!) - e.g., throttles of DynamoDB, alarms on RDS, custom metrics(helpful for private resources)
-• Health Checks are integrated with CW metrics
+<br> • Health Checks are integrated with CW metrics
 
+### 3rd Party Register with Amazon Route 53
+<br> • If you buy your domain on a 3rd party registrar e.g. GoDaddy and Cloudflare, you can still use Route 53 as the DNS Service provider
+<br> 1. Create a Public Hosted Zone in Route 53, this is where you set up DNS records for your domain
+<br> 2. Update NS Records on 3rd party website and you point it to Route 53 name servers. Route 53 will give you these when you create the hosted zone and you add them into your registrar.
 
-
-
-
-
+<br> Your domain registrar and your dns service are two separate things, a registrar sells you a domain but you can choose a different dns provider
+<br> • But every Domain Registrar usually comes with basic DNS features
 
 
 ## CDN(CloudFront)
