@@ -1046,5 +1046,5 @@ Now, all those targets live inside or live in, you know, an ASG, right? ASG grou
 
 Some interview questions would be, for example, we would ask a bit more basic, when would you pick an NLB over an ALB, right? What are the use cases of each one? You need to understand that. Another example may be, why is connection draining, you know, critical during scaling, right? Another thing could be, for example, name two metrics you'd auto-scale, you know, for a read-heavy API. These are some examples to think about
 
-
+###  Possible Networking Interview Questions
 
