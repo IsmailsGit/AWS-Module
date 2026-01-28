@@ -1031,5 +1031,20 @@ So in a nutshell, ALB or EC2 as an origin is all about using CloudFront to bring
 <br> • AWS Fargate
 <br> - No maintenance required; no nodes managed
 
+### High Load Traffic Network Load Balancer(v2) TCP(Layer 4) based traffic
+![Screenshot](https://github.com/user-attachments/assets/90065990-dec9-4876-9c86-42fa37a084ae)
+
+Scenario imagine it's Black Friday, orders are flying traffic's through the roof, but your site stays chill. Why? Because AWS is doing the heavy lifting Let's give a real example.
+
+First, Route 53, your DNS, is your front door basically, right? Decides where each user goes. Send them to the closest healthy region, so nobody waits in line or hits an endpoint.
+
+Next up would be CloudFront, for example. Think of it as a worldwide machine,    It parks all the static stuff, images, CSS, JS files, right next to users, so your origin servers, your backend, barely feel the load. If you're in a quick tweet, for example, you can add in maybe a Lambda Edge function to write in your headers and so on.
+
+And behind CloudFront, that would sit your elastic load balancer, and assuming it's a web-based one, application load balancer, right? And if you're using something more networking, something more faster, a network load balancer. Let's assume it's an ALB. If you're doing any fancy HTTP tricks, you know, path-based routing, host-based routing, you know, WebSockets, you can spin up an ALB, right?
+
+Now, all those targets live inside or live in, you know, an ASG, right? ASG group. And they will point to either Fargate, ECS, EKS, VPN containers, or EC2. You can set rules and so on. Now, this is just an example, right? A lot of traffic will be handled behind the scenes.
+
+Some interview questions would be, for example, we would ask a bit more basic, when would you pick an NLB over an ALB, right? What are the use cases of each one? You need to understand that. Another example may be, why is connection draining, you know, critical during scaling, right? Another thing could be, for example, name two metrics you'd auto-scale, you know, for a read-heavy API. These are some examples to think about
+
 
 
