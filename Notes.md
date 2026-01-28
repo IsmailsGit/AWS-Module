@@ -1048,3 +1048,11 @@ Some interview questions would be, for example, we would ask a bit more basic, w
 
 ###  Possible Networking Interview Questions
 
+In interviews, right, a common question that Mo likes to ask interview candidates is how to set up a VPC from scratch. What components do you need for your services or your, you know, resources in the VPC to get access to the internet, right? What components do you need? Is it an internet gateway? Is it a NAT gateway? Do you need a private subnet? Do you need a public subnet? And so on, right?
+
+Another important one is the difference between stateful firewalls and stateless firewalls, right? Stateful and stateless, very similar, but they have differences, right? And it's very important to understand that a stateful firewall essentially is just a security group and a stateless firewall is a NACL, Network Access Control List, NACL. That's the essential fundamentals, right? So it's important to understand how they actually work. Which one is at subnet level? Which one is at instance level?
+
+
+
+
+
