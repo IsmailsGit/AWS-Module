@@ -1005,6 +1005,31 @@ Now security is key here. You must configure your security group properly to all
 
 So in a nutshell, ALB or EC2 as an origin is all about using CloudFront to bring speed and scalability to your application, while making sure your architecture is secure.
 
+### ECS Service Auto Scaling
+<br> • Automatically increase/decrease the desired number of ECS tasks
+<br> • Amazon ECS Auto Scaling uses AWS Application Auto Scaling
+<br> - ECS Service Average CPU Utilization
+<br> - ECS Service Average Memory Utilization - Scale on RAM
+<br> - ALB Request Count Per Target - metric coming from the ALB
+
+<br> • Target Tracking - Scale based on target value for a specific CloudWatch metric
+<br> • Step Scaling - Scale based on a specified CloudWatch Alarm.
+<br> • Scheduled Scaling - Scale based on a specified date/time (predictable changes).
+
+<br> • ECS Service Auto Scaling (task level) = EC2 Auto Scaling (EC2 instance level)
+<br> • Fargate Auto Scaling is much easier to setup (because Serverless)
+
+### Amazon EKS - Node Types
+<br> • Managed Node Groups
+<br> - Creates and manages nodes EC2 instances) for you
+<br> - Nodes are part of an ASG Managed by EKS
+<br> - Supports On-Demand or Spot instances
+<br> • Self-Managed Nodes
+<br> - Nodes created by you and registered to the EKS cluster and managed by an ASG
+<br> - You can use prebuilt AMI - Amazon EKS optimized AMI
+<br> - Supports On-Demand or Spot Instances
+<br> • AWS Fargate
+<br> - No maintenance required; no nodes managed
 
 
 
