@@ -75,3 +75,24 @@ Both instances
 
 ### 4. Testing
 
+Visit the ALB DNS name
+<img width="439" height="83" alt="image" src="https://github.com/user-attachments/assets/2c5dc0ec-4f64-4233-b637-d908201338db" />
+
+<img width="725" height="264" alt="image" src="https://github.com/user-attachments/assets/919cfcb4-ee33-45b0-8730-72c94c029bc1" />
+
+
+
+
+Refresh to verify traffic alternates between both instances
+
+When i refresh the page it alternates between both instances
+
+<img width="719" height="233" alt="image" src="https://github.com/user-attachments/assets/93dc53bf-8899-4690-b5fc-84600f070b28" />
+
+<img width="731" height="195" alt="image" src="https://github.com/user-attachments/assets/ac9db304-ca21-4c6d-848c-4d9e8dca1052" />
+
+Confirm health checks are healthy
+
+<img width="453" height="354" alt="image" src="https://github.com/user-attachments/assets/38c26208-9b54-4ece-aa82-b1feb84e86af" />
+
+
