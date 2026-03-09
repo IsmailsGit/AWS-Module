@@ -26,6 +26,11 @@ Both instances are in two different availability zones
 
 
 Install a simple web server using user-data
+<br>User data i used
+
+<img width="472" height="190" alt="image" src="https://github.com/user-attachments/assets/e6825714-a443-4673-bb06-f3ada9be5dc5" />
+
+
 <br> Each instance should return different content for testing
 
 Instance 1 Web Server
